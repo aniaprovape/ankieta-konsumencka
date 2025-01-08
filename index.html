@@ -42,12 +42,15 @@
             color: #141B4D;
         }
         .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             margin: 10px 20px;
         }
         .radio-group label {
-            display: block;
+            display: flex;
+            align-items: center;
             font-size: 14px;
-            margin-bottom: 5px;
         }
         button {
             margin: 20px;
@@ -69,16 +72,17 @@
         }
         .checkbox-group {
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+            display: block;
         }
         .checkbox-group input {
+            vertical-align: top;
             margin-right: 10px;
-            flex-shrink: 0;
         }
         .checkbox-group label {
             font-size: 12px;
             line-height: 1.5;
+            display: inline-block;
+            vertical-align: top;
         }
         .disclaimer {
             font-size: 12px;
@@ -189,3 +193,4 @@
     </div>
 </body>
 </html>
+
