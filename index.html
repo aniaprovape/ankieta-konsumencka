@@ -25,12 +25,12 @@
             margin-bottom: 20px;
         }
         .logo img {
-            max-width: 200px; /* Powiększono logotyp */
+            max-width: 220px; /* Powiększono logo */
         }
         .form-row {
             display: flex;
             justify-content: space-between;
-            gap: 5px; /* Zmniejszono odstępy między polami */
+            gap: 20px; /* 2 cm odstępu między polami */
         }
         label {
             display: block;
@@ -46,13 +46,16 @@
             background: #ECDEDB;
             color: #141B4D;
         }
-        input[type="radio"] {
-            margin-right: 5px;
-        }
         .radio-group {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 20px; /* 2 cm odstępu między opcjami TAK i NIE */
             margin-top: 10px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
         }
         button {
             margin-top: 20px;
@@ -69,10 +72,14 @@
         button:hover {
             background-color: #c4a467;
         }
-        .checkbox-group label {
-            font-size: 12px;
-            display: block;
+        .checkbox-group {
             margin-top: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .checkbox-group input {
+            margin-top: 2px;
         }
         .disclaimer {
             font-size: 12px;
@@ -96,6 +103,10 @@
         @media (max-width: 600px) {
             .form-row {
                 flex-direction: column;
+                gap: 10px;
+            }
+            .logo img {
+                max-width: 150px; /* Zmniejszone logo w wersji mobilnej */
             }
         }
     </style>
@@ -113,11 +124,11 @@
             </select>
 
             <div class="form-row">
-                <div>
+                <div style="flex: 1;">
                     <label for="first_name">Imię:</label>
                     <input type="text" name="first_name" id="first_name" required>
                 </div>
-                <div>
+                <div style="flex: 1;">
                     <label for="last_name">Nazwisko:</label>
                     <input type="text" name="last_name" id="last_name" required>
                 </div>
@@ -130,11 +141,11 @@
             <input type="text" name="phone" id="phone" required>
 
             <div class="form-row">
-                <div>
+                <div style="flex: 1;">
                     <label for="birth_date">Data urodzenia:</label>
                     <input type="date" name="birth_date" id="birth_date" required>
                 </div>
-                <div>
+                <div style="flex: 1;">
                     <label for="zip_code">Kod pocztowy:</label>
                     <input type="text" name="zip_code" id="zip_code" required>
                 </div>
@@ -148,20 +159,25 @@
 
             <label>Zgody:</label>
             <div class="checkbox-group">
+                <input type="checkbox" name="agreement1" value="agreed" required>
                 <label>
-                    <input type="checkbox" name="agreement1" value="agreed" required>
                     Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.<br>
-                    Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. Działania te będą obejmowały prezentowanie mi informacji o produktach, usługach, konkursach i innych inicjatywach Pro Vape Polska sp. z o.o., w tym prezentowanie spersonalizowanych informacji oraz ofert marketingowych. *
+                    Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
                 </label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" name="agreement2" value="email_agreed" required>
                 <label>
-                    <input type="checkbox" name="agreement2" value="email_agreed" required>
                     Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS. *
                 </label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" name="agreement3" value="phone_agreed">
                 <label>
-                    <input type="checkbox" name="agreement3" value="phone_agreed">
                     Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
                 </label>
             </div>
+
             <p class="note">* Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.</p>
 
             <div class="nicotine-warning">
@@ -177,5 +193,4 @@
     </div>
 </body>
 </html>
-
 
