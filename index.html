@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -8,7 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #2a2a2a;
+            background-color: #141B4D;
+            color: #D5B578;
             margin: 0;
             padding: 0;
         }
@@ -16,26 +16,28 @@
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
-            background: white;
+            background: #141B4D;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
         h1 {
             text-align: center;
-            color: #333;
             font-size: 24px;
+            margin-bottom: 20px;
         }
         label {
             display: block;
             margin-top: 15px;
-            font-weight: bold;
+            font-size: 14px;
         }
-        input, select, textarea {
+        input, select {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #D5B578;
             border-radius: 5px;
+            background: #141B4D;
+            color: #D5B578;
         }
         input[type="radio"],
         input[type="checkbox"] {
@@ -50,27 +52,63 @@
             margin-top: 20px;
             padding: 10px 15px;
             width: 100%;
-            background-color: #007BFF;
-            color: white;
+            background-color: #D5B578;
+            color: #141B4D;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: bold;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #c4a467;
+        }
+        .disclaimer {
+            font-size: 12px;
+            margin-top: 20px;
         }
         .note {
             font-size: 12px;
-            color: #666;
             margin-top: 10px;
+        }
+        .nicotine-warning {
+            background: white;
+            color: black;
+            border: 2px solid black;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .checkbox-group label {
+            font-size: 12px;
+            font-weight: normal;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            input, select {
+                font-size: 14px;
+            }
+            button {
+                font-size: 14px;
+            }
+            .checkbox-group label {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Ankieta Konsumencka</h1>
-        <form action="https://formspree.io/f/mwppwdww" method="POST">
+        <form action="https://formsubmit.co/anna.nechytailova@gmail.com" method="POST">
             <label for="offer">Wybierz ofertę:</label>
             <select name="offer" id="offer" required>
                 <option value="NEXIONE Aspire | Salt">NEXIONE Aspire | Salt</option>
@@ -105,25 +143,30 @@
             <div class="checkbox-group">
                 <label>
                     <input type="checkbox" name="agreement1" value="agreed" required>
-                    Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych. *
+                    Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych. Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. Działania te będą obejmowały prezentowanie mi informacji o produktach, usługach, konkursach i innych inicjatywach Pro Vape Polska sp. z o.o., w tym prezentowanie spersonalizowanych informacji oraz ofert marketingowych.
                 </label>
                 <label>
-                    <input type="checkbox" name="agreement2" value="agreed" required>
-                    Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. w celu prowadzenia działań marketingowych. *
-                </label>
-                <label>
-                    <input type="checkbox" name="agreement3" value="email_agreed">
+                    <input type="checkbox" name="agreement2" value="email_agreed" required>
                     Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS.
                 </label>
                 <label>
-                    <input type="checkbox" name="agreement4" value="phone_agreed">
+                    <input type="checkbox" name="agreement3" value="phone_agreed">
                     Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
                 </label>
             </div>
-            <p class="note">* Zgoda wymagana.</p>
+            <p class="note">* Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.</p>
+
+            <div class="nicotine-warning">
+                Wyrób zawiera nikotynę, która powoduje uzależnienie.
+            </div>
 
             <button type="submit">Wyślij</button>
+
+            <p class="disclaimer">
+                Pamiętaj, że zawsze możesz wycofać powyższe zgody na przetwarzanie Twoich danych osobowych. Aby wycofać swoje zgody, skontaktuj się z nami pod adresem: biuro@pro-vape.pl. Twoje dane będą przetwarzane wyłącznie w tych celach, na które wyraziłeś/aś swoją zgodę powyżej.
+            </p>
         </form>
     </div>
 </body>
 </html>
+
