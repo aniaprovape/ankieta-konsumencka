@@ -44,10 +44,15 @@
         .radio-group {
             margin: 10px 20px;
         }
+        /* Zmiana: label w radio-group jako inline-block, aby TAK i NIE były obok siebie */
         .radio-group label {
-            display: block;
+            display: inline-block;
             font-size: 14px;
-            margin-bottom: 5px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .radio-group input {
+            margin-right: 5px;
         }
         button {
             margin: 20px;
@@ -69,16 +74,18 @@
         }
         .checkbox-group {
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+            display: flex; /* pozostań przy flex, żeby checkbox był przed tekstem */
+            align-items: flex-start; 
         }
         .checkbox-group input {
             margin-right: 10px;
             flex-shrink: 0;
+            margin-top: 4px; /* minimalna korekta, by checkbox był wyrównany do tekstu */
         }
         .checkbox-group label {
             font-size: 12px;
             line-height: 1.5;
+            cursor: pointer;
         }
         .disclaimer {
             font-size: 12px;
@@ -151,6 +158,7 @@
 
             <label>Zdjęcie paragonu:</label>
             <div class="radio-group">
+                <!-- Po zmianach TAK i NIE będą na jednej linii -->
                 <label><input type="radio" name="receipt" value="tak" required> TAK</label>
                 <label><input type="radio" name="receipt" value="nie" required> NIE</label>
             </div>
@@ -192,3 +200,4 @@
     </div>
 </body>
 </html>
+
