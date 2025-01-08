@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ankieta Konsumencka</title>
   <style>
+    /* ------------------ Reset/Podstawowe style ------------------ */
     body {
       font-family: Arial, sans-serif;
       background-color: #141B4D;
@@ -27,57 +28,13 @@
     .logo img {
       max-width: 220px;
     }
+    /* Etykiety dla obu grup */
     label {
       display: block;
       margin: 15px 20px 5px 20px;
       font-size: 14px;
     }
-    input, select {
-      width: calc(100% - 40px);
-      padding: 10px;
-      margin: 0 20px 15px 20px;
-      border: 1px solid #D5B578;
-      border-radius: 5px;
-      background: #ECDEDB;
-      color: #141B4D;
-      box-sizing: border-box;
-    }
-    .input-container {
-      /* służy głównie do logicznego podziału */
-    }
-    .checkbox-container {
-      margin: 15px 20px;
-    }
-
-    /* Radiobuttony (TAK/NIE) – inline, aby były obok siebie */
-    .radio-group label {
-      display: inline-block;
-      font-size: 14px;
-      margin-right: 15px;
-      cursor: pointer;
-    }
-    .radio-group input {
-      margin-right: 5px;
-      vertical-align: middle;
-    }
-
-    /* Nowa klasa wymuszająca checkbox i etykietę w jednej linii */
-    .checkbox-group-inline {
-      display: flex;
-      align-items: center; 
-      margin-bottom: 10px;
-    }
-    .checkbox-group-inline input {
-      margin-right: 10px; 
-      vertical-align: middle;
-    }
-    .checkbox-group-inline label {
-      font-size: 12px;
-      line-height: 1.4;
-      cursor: pointer;
-      margin: 0; /* można dostosować wedle potrzeb */
-    }
-
+    /* Przyciski wysyłania */
     button {
       margin: 20px;
       padding: 10px 15px;
@@ -93,10 +50,13 @@
     button:hover {
       background-color: #c4a467;
     }
-
     .note {
       font-size: 12px;
       margin: 10px 20px;
+    }
+    .disclaimer {
+      font-size: 12px;
+      margin: 20px 20px 0 20px;
     }
     .nicotine-warning {
       background: white;
@@ -109,11 +69,6 @@
       margin: 20px 20px 0 20px;
       border-radius: 5px;
     }
-    .disclaimer {
-      font-size: 12px;
-      margin: 20px 20px 0 20px;
-    }
-
     @media (max-width: 600px) {
       .container {
         padding: 15px;
@@ -121,13 +76,72 @@
       .logo img {
         max-width: 150px;
       }
-      label, input, select, .radio-group, button, .checkbox-container, .note, .disclaimer, .nicotine-warning {
+      label, .note, .disclaimer, .nicotine-warning {
         margin-left: 10px;
         margin-right: 10px;
       }
       button {
         width: calc(100% - 20px);
       }
+    }
+
+    /* ------------------ 1. Kontener z polami tekstowymi  ------------------ */
+    .input-container {
+      /* opcjonalnie: można tu dodać odrębne marginesy/padding itp. */
+    }
+
+    /* Tylko w input-container nadajemy szerokość polom */
+    .input-container input[type="text"],
+    .input-container input[type="email"],
+    .input-container input[type="date"],
+    .input-container input[type="tel"],
+    .input-container input[type="number"],
+    .input-container select {
+      width: calc(100% - 40px);
+      padding: 10px;
+      margin: 0 20px 15px 20px;
+      border: 1px solid #D5B578;
+      border-radius: 5px;
+      background: #ECDEDB;
+      color: #141B4D;
+      box-sizing: border-box;
+    }
+
+    /* ------------------ 2. Kontener z checkboxami / radiobuttonami  ------------------ */
+    .checkbox-container {
+      margin: 15px 20px;
+      /* tu nie narzucamy szerokości 100% - 40px 
+         dla inputów [type=checkbox] i [type=radio] */
+    }
+
+    /* Zbiorcze style dla "grupy" (zadeklarujmy marginy) */
+    .checkbox-group, .radio-group {
+      margin-bottom: 15px;
+    }
+
+    /* Radiobuttony TAK/NIE – żeby były w linii */
+    .radio-group label {
+      display: inline-block;
+      font-size: 14px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    .radio-group input[type="radio"] {
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    /* Checkbox + label w jednej linii */
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .checkbox-group label {
+      display: inline-block;
+      font-size: 12px;
+      line-height: 1.5;
+      cursor: pointer;
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -140,7 +154,8 @@
     </div>
 
     <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST">
-      <!-- Kontener na pola tekstowe i selecty -->
+      
+      <!-- 1. GRUPA: Pola tekstowe, selecty itp. -->
       <div class="input-container">
         <label for="offer">Wybierz ofertę:</label>
         <select name="offer" id="offer" required>
@@ -170,7 +185,7 @@
         <input type="text" name="consumer_source" id="consumer_source" required>
       </div>
 
-      <!-- Kontener na radiobuttony i checkboxy -->
+      <!-- 2. GRUPA: Checkboxy i Radiobuttony -->
       <div class="checkbox-container">
         <!-- Radiobuttony TAK/NIE -->
         <label>Zdjęcie paragonu:</label>
@@ -183,29 +198,24 @@
           </label>
         </div>
 
-        <!-- Tytuł „Zgody” przed checkboxami -->
-        <h3 style="margin: 20px 0 10px; font-size: 14px;">Zgody</h3>
-
-        <!-- Checkboksy ze zgodami (w jednej linii) -->
-        <div class="checkbox-group-inline">
+        <!-- Checkboksy ze zgodami -->
+        <div class="checkbox-group">
           <input type="checkbox" name="agreement1" id="agreement1" value="agreed" required>
           <label for="agreement1">
             Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.<br>
-            Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie 
+            Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie, 
             w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, 
             z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
           </label>
         </div>
-
-        <div class="checkbox-group-inline">
+        <div class="checkbox-group">
           <input type="checkbox" name="agreement2" id="agreement2" value="email_agreed" required>
           <label for="agreement2">
             Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) 
             oraz wiadomości SMS. *
           </label>
         </div>
-
-        <div class="checkbox-group-inline">
+        <div class="checkbox-group">
           <input type="checkbox" name="agreement3" id="agreement3" value="phone_agreed">
           <label for="agreement3">
             Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
@@ -213,7 +223,9 @@
         </div>
       </div>
 
-      <p class="note">* Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.</p>
+      <p class="note">
+        * Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.
+      </p>
 
       <div class="nicotine-warning">
         Wyrób zawiera nikotynę, która powoduje uzależnienie.
@@ -222,11 +234,12 @@
       <button type="submit">Wyślij</button>
 
       <p class="disclaimer">
-        Pamiętaj, że zawsze możesz wycofać powyższe zgody na przetwarzanie Twoich danych osobowych. 
-        Aby wycofać swoje zgody, skontaktuj się z nami pod adresem: biuro@pro-vape.pl. 
+        Pamiętaj, że zawsze możesz wycofać powyższe zgody na przetwarzanie Twoich danych osobowych.
+        Aby wycofać swoje zgody, skontaktuj się z nami pod adresem: biuro@pro-vape.pl.
         Twoje dane będą przetwarzane wyłącznie w tych celach, na które wyraziłeś/aś swoją zgodę powyżej.
       </p>
     </form>
   </div>
 </body>
 </html>
+
