@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankieta Konsumencka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ankieta Konsumencka</h1>
+        <form action="https://formspree.io/f/{your_form_id}" method="POST">
+            <label for="offer">Wybierz ofertę:</label>
+            <select name="offer" id="offer" required>
+                <option value="NEXIONE Aspire | Salt">NEXIONE Aspire | Salt</option>
+                <option value="CRISTALLITE Salt">CRISTALLITE Salt</option>
+            </select>
+
+            <label for="first_name">Imię:</label>
+            <input type="text" name="first_name" id="first_name" required>
+
+            <label for="last_name">Nazwisko:</label>
+            <input type="text" name="last_name" id="last_name" required>
+
+            <label for="email">Adres e-mail:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="phone">Nr telefonu:</label>
+            <input type="text" name="phone" id="phone" required>
+
+            <label for="birth_date">Data urodzenia:</label>
+            <input type="date" name="birth_date" id="birth_date" required>
+
+            <label for="zip_code">Kod pocztowy:</label>
+            <input type="text" name="zip_code" id="zip_code" required>
+
+            <label for="consumer_source">Źródło konsumenta:</label>
+            <input type="text" name="consumer_source" id="consumer_source">
+
+            <label for="receipt">Zdjęcie paragonu (URL):</label>
+            <input type="url" name="receipt" id="receipt" required>
+
+            <label for="agreement">Zgody:</label>
+            <input type="checkbox" name="agreement" id="agreement" value="agreed" required> Wyrażam zgodę na przetwarzanie moich danych osobowych.
+
+            <button type="submit">Wyślij</button>
+        </form>
+    </div>
+</body>
+</html>
