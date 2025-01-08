@@ -125,6 +125,22 @@
       margin-top: 5px;
       font-size: 14px;
     }
+    .signature-container {
+      display: none;
+      margin: 15px 20px 0 20px;
+    }
+    .signature-container label {
+      margin: 0 0 5px 0;
+      font-size: 14px;
+    }
+    .signature-canvas {
+      border: 1px solid #D5B578;
+      border-radius: 5px;
+      width: 100%;
+      height: 200px;
+      background: #ffffff;
+      touch-action: none;
+    }
     @media (max-width: 600px) {
       .container {
         padding: 15px;
@@ -140,6 +156,9 @@
         margin-left: 10px;
         margin-right: 10px;
       }
+      .signature-container {
+        display: block;
+      }
     }
   </style>
 </head>
@@ -150,7 +169,7 @@
         src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
         alt="Nexi One SALT Logo">
     </div>
-    <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST" enctype="multipart/form-data">
+    <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
       <div class="input-container">
         <label for="offer">Wybierz ofertę:</label>
         <select name="offer" id="offer" required>
@@ -206,28 +225,34 @@
         <div class="checkbox-group">
           <input type="checkbox" name="agreement1" id="agreement1" value="agreed" required>
           <label for="agreement1">
-            Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.*<br>
+            Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.<br>
             Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie,
             w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego,
-            z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych: 
+            z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
           </label>
         </div>
         <div class="checkbox-group">
           <input type="checkbox" name="agreement2" id="agreement2" value="email_agreed" required>
           <label for="agreement2">
-            za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS. *
+            Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail)
+            oraz wiadomości SMS. *
           </label>
         </div>
         <div class="checkbox-group">
           <input type="checkbox" name="agreement3" id="agreement3" value="phone_agreed">
           <label for="agreement3">
-            poprzez kontakt telefoniczny, w tym połączenia głosowe.
+            Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
           </label>
         </div>
       </div>
       <p class="note">
         * Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.
       </p>
+      <div class="signature-container">
+        <label for="signatureCanvas">Podpis:</label>
+        <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+        <input type="hidden" name="signature" id="signature">
+      </div>
       <div class="nicotine-warning">
         Wyrób zawiera nikotynę, która powoduje uzależnienie.
       </div>
@@ -239,6 +264,36 @@
       </p>
     </form>
   </div>
+  <script>
+    let canvas = document.getElementById("signatureCanvas");
+    let ctx = canvas.getContext("2d");
+    let drawing = false;
+    function getPosition(e) {
+      let r = canvas.getBoundingClientRect();
+      return {
+        x: e.touches[0].clientX - r.left,
+        y: e.touches[0].clientY - r.top
+      };
+    }
+    canvas.addEventListener("touchstart", e => {
+      drawing = true;
+      let p = getPosition(e);
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+    });
+    canvas.addEventListener("touchmove", e => {
+      if (!drawing) return;
+      let p = getPosition(e);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+    });
+    canvas.addEventListener("touchend", e => {
+      drawing = false;
+    });
+    function saveSignature() {
+      let dataURL = canvas.toDataURL("image/png");
+      document.getElementById("signature").value = dataURL;
+    }
+  </script>
 </body>
 </html>
-
