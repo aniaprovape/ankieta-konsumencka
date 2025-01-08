@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ankieta Konsumencka</title>
   <style>
-    /* ------------------ Reset/Podstawowe style ------------------ */
+
     body {
       font-family: Arial, sans-serif;
       background-color: #141B4D;
@@ -33,9 +33,9 @@
       margin: 15px 20px 5px 20px;
       font-size: 14px;
     }
-    /* ------------------ Przyciski wysyłania i ostrzeżenie ------------------ */
+
     button {
-      margin: 20px 20px 0 20px; /* Takie same marginesy jak .nicotine-warning */
+      margin: 20px 20px 0 20px; 
       padding: 10px 15px;
       width: calc(100% - 40px);
       background-color: #D5B578;
@@ -58,7 +58,7 @@ padding: 10px 0;
       font-weight: bold;
       text-align: center;
     
-      margin: 20px 20px 0 20px; /* Marginesy z każdej strony po 20px */
+      margin: 20px 20px 0 20px; 
       border-radius: 5px;
     }
     .note {
@@ -70,7 +70,7 @@ padding: 10px 0;
       margin: 20px 20px 0 20px;
     }
 
-    /* ------------------ Kontener na pola tekstowe i selecty ------------------ */
+
     .input-container input[type="text"],
     .input-container input[type="email"],
     .input-container input[type="date"],
@@ -87,12 +87,12 @@ padding: 10px 0;
       box-sizing: border-box;
     }
 
-    /* ------------------ Kontener na checkboxy, radiobuttony i upload pliku ------------------ */
+
     .checkbox-container {
       margin: 15px 20px;
     }
 
-    /* Radiobuttony (TAK/NIE) w jednej linii */
+
     .radio-group {
       margin-bottom: 15px;
     }
@@ -107,15 +107,15 @@ padding: 10px 0;
       vertical-align: middle;
     }
 
-    /* Checkboksy – tekst się zawija w obrębie ramki ankiety, nie wyjeżdża */
+
     .checkbox-group {
-      display: flex;           /* flex pozwala checkboxowi i tekstowi być obok siebie */
-      align-items: flex-start; /* checkbox będzie przy górnej linii tekstu */
+      display: flex;          
+      align-items: flex-start;
       margin-bottom: 15px;
     }
     .checkbox-group input[type="checkbox"] {
       margin-right: 10px;
-      margin-top: 4px;         /* lekkie wyrównanie do tekstu */
+      margin-top: 4px;         
       flex-shrink: 0;
     }
     .checkbox-group label {
@@ -124,12 +124,12 @@ padding: 10px 0;
       cursor: pointer;
     }
 
-    /* Pola uploadu zdjęcia paragonu (file input) */
+
     .file-upload {
       margin: 0 20px 15px 20px;
     }
     .file-upload label {
-      margin: 15px 0 5px 0; /* np. mniejszy margines w samej etykiecie */
+      margin: 15px 0 5px 0; 
     }
     .file-upload input[type="file"] {
       background: none;
@@ -137,10 +137,10 @@ padding: 10px 0;
       border: none;
       margin-top: 5px;
       font-size: 14px;
-      /* Możesz dodać stylizację typu border, if needed */
+
     }
 
-    /* ------------------ Responsywność ------------------ */
+
     @media (max-width: 600px) {
       .container {
         padding: 15px;
@@ -148,7 +148,7 @@ padding: 10px 0;
       .logo img {
         max-width: 150px;
       }
-      /* marginesy buttona i nicotine-warning na węższych ekranach */
+     
       button, .nicotine-warning {
         margin: 20px 10px 0 10px !important;
         width: calc(100% - 20px);
