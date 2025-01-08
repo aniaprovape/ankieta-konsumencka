@@ -20,10 +20,22 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 150px;
+        }
         h1 {
             text-align: center;
             font-size: 24px;
             margin-bottom: 20px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
         }
         label {
             display: block;
@@ -36,16 +48,15 @@
             margin-top: 5px;
             border: 1px solid #D5B578;
             border-radius: 5px;
-            background: #141B4D;
-            color: #D5B578;
+            background: #ECDEDB;
+            color: #141B4D;
         }
-        input[type="radio"],
-        input[type="checkbox"] {
-            width: auto;
-            margin-right: 10px;
+        input[type="radio"] {
+            margin-right: 5px;
         }
-        .radio-group,
-        .checkbox-group {
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
             margin-top: 10px;
         }
         button {
@@ -82,44 +93,36 @@
             margin-top: 20px;
             border-radius: 5px;
         }
-        .checkbox-group label {
-            font-size: 12px;
-            font-weight: normal;
-        }
         @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 20px;
-            }
-            input, select {
-                font-size: 14px;
-            }
-            button {
-                font-size: 14px;
-            }
-            .checkbox-group label {
-                font-size: 11px;
+            .form-row {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+            <img src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg" alt="Nexi One SALT Logo">
+        </div>
         <h1>Ankieta Konsumencka</h1>
-        <form action="https://formsubmit.co/anna.nechytailova@gmail.com" method="POST">
+        <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST">
             <label for="offer">Wybierz ofertę:</label>
             <select name="offer" id="offer" required>
                 <option value="NEXIONE Aspire | Salt">NEXIONE Aspire | Salt</option>
                 <option value="CRISTALLITE Salt">CRISTALLITE Salt</option>
             </select>
 
-            <label for="first_name">Imię:</label>
-            <input type="text" name="first_name" id="first_name" required>
-
-            <label for="last_name">Nazwisko:</label>
-            <input type="text" name="last_name" id="last_name" required>
+            <div class="form-row">
+                <div>
+                    <label for="first_name">Imię:</label>
+                    <input type="text" name="first_name" id="first_name" required>
+                </div>
+                <div>
+                    <label for="last_name">Nazwisko:</label>
+                    <input type="text" name="last_name" id="last_name" required>
+                </div>
+            </div>
 
             <label for="email">Adres e-mail:</label>
             <input type="email" name="email" id="email" required>
@@ -127,11 +130,16 @@
             <label for="phone">Nr telefonu:</label>
             <input type="text" name="phone" id="phone" required>
 
-            <label for="birth_date">Data urodzenia:</label>
-            <input type="date" name="birth_date" id="birth_date" required>
-
-            <label for="zip_code">Kod pocztowy:</label>
-            <input type="text" name="zip_code" id="zip_code" required>
+            <div class="form-row">
+                <div>
+                    <label for="birth_date">Data urodzenia:</label>
+                    <input type="date" name="birth_date" id="birth_date" required>
+                </div>
+                <div>
+                    <label for="zip_code">Kod pocztowy:</label>
+                    <input type="text" name="zip_code" id="zip_code" required>
+                </div>
+            </div>
 
             <label>Zdjęcie paragonu:</label>
             <div class="radio-group">
