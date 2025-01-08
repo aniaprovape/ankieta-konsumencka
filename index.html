@@ -35,7 +35,7 @@
     }
     /* ------------------ Przyciski wysyłania i ostrzeżenie ------------------ */
     button {
-      margin: 20px 20px 0 20px;  /* Takie same marginesy jak .nicotine-warning */
+      margin: 20px 20px 0 20px; /* Takie same marginesy jak .nicotine-warning */
       padding: 10px 15px;
       width: calc(100% - 40px);
       background-color: #D5B578;
@@ -57,7 +57,7 @@
       font-weight: bold;
       text-align: center;
       padding: 10px;
-      margin: 20px 20px 0 20px;  /* Marginesy z każdej strony po 20px */
+      margin: 20px 20px 0 20px; /* Marginesy z każdej strony po 20px */
       border-radius: 5px;
     }
     .note {
@@ -86,50 +86,57 @@
       box-sizing: border-box;
     }
 
-    /* ------------------ Kontener na checkboxy, radiobuttony ------------------ */
+    /* ------------------ Kontener na checkboxy, radiobuttony i upload pliku ------------------ */
     .checkbox-container {
       margin: 15px 20px;
     }
+
+    /* Radiobuttony (TAK/NIE) w jednej linii */
     .radio-group {
       margin-bottom: 15px;
     }
-    /* Radiobuttony (TAK/NIE) obok siebie */
     .radio-group label {
       display: inline-block;
       font-size: 14px;
       margin-right: 15px;
       cursor: pointer;
-      white-space: nowrap; /* Zapobiega zawijaniu “TAK”/“NIE” */
     }
     .radio-group input[type="radio"] {
       margin-right: 5px;
       vertical-align: middle;
     }
 
-    /* 
-      CHECKBOXY W JEDNEJ LINII Z TEKSTEM
-      - display: inline-flex + white-space: nowrap (lub flex-wrap: nowrap),
-        aby zapobiec zawijaniu do nowej linii.
-      - Jeżeli tekst jest zbyt długi, może pojawić się poziomy scrollbar.
-    */
+    /* Checkboksy – tekst się zawija w obrębie ramki ankiety, nie wyjeżdża */
     .checkbox-group {
-      display: inline-flex;
-      align-items: center;
+      display: flex;           /* flex pozwala checkboxowi i tekstowi być obok siebie */
+      align-items: flex-start; /* checkbox będzie przy górnej linii tekstu */
       margin-bottom: 15px;
-      white-space: nowrap; /* Wymusza jedną linię */
     }
     .checkbox-group input[type="checkbox"] {
       margin-right: 10px;
-      vertical-align: middle;
-      flex-shrink: 0; /* Checkbox nie będzie się kurczył */
+      margin-top: 4px;         /* lekkie wyrównanie do tekstu */
+      flex-shrink: 0;
     }
     .checkbox-group label {
       font-size: 12px;
       line-height: 1.5;
       cursor: pointer;
-      vertical-align: middle;
-      margin: 0;
-      flex-grow: 1; /* Tekst zajmuje pozostałe miejsce */
+    }
+
+    /* Pola uploadu zdjęcia paragonu (file input) */
+    .file-upload {
+      margin: 0 20px 15px 20px;
+    }
+    .file-upload label {
+      margin: 15px 0 5px 0; /* np. mniejszy margines w samej etykiecie */
+    }
+    .file-upload input[type="file"] {
+      background: none;
+      color: #D5B578;
+      border: none;
+      margin-top: 5px;
+      font-size: 14px;
+      /* Możesz dodać stylizację typu border, if needed */
     }
 
     /* ------------------ Responsywność ------------------ */
@@ -140,10 +147,7 @@
       .logo img {
         max-width: 150px;
       }
-      /*
-        Aby marginesy buttona i nicotine-warning
-        były spójne również na mobile:
-      */
+      /* marginesy buttona i nicotine-warning na węższych ekranach */
       button, .nicotine-warning {
         margin: 20px 10px 0 10px !important;
         width: calc(100% - 20px);
@@ -151,12 +155,6 @@
       label, .note, .disclaimer {
         margin-left: 10px;
         margin-right: 10px;
-      }
-      /* Wymuszenie braku zwijania checkbox + tekst
-         na małych ekranach może powodować poziomy scroll,
-         ale wypełniamy wymaganie "dokładnie w jednej linii" */
-      .checkbox-group {
-        white-space: nowrap;
       }
     }
   </style>
@@ -171,7 +169,7 @@
     </div>
     
     <!-- Formularz -->
-    <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST">
+    <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST" enctype="multipart/form-data">
       
       <!-- Pola tekstowe i select -->
       <div class="input-container">
@@ -218,7 +216,13 @@
           </label>
         </div>
 
-        <!-- Checkboksy w jednej lini z tekstem -->
+        <!-- Pole do wgrania pliku (zdjęcia paragonu) -->
+        <div class="file-upload">
+          <label for="receiptFile">Załącz zdjęcie paragonu:</label>
+          <input type="file" id="receiptFile" name="receiptFile" accept="image/*" />
+        </div>
+
+        <!-- Checkboksy w wielu liniach (tekst nie wyjeżdża poza ramkę) -->
         <div class="checkbox-group">
           <input type="checkbox" name="agreement1" id="agreement1" value="agreed" required>
           <label for="agreement1">
@@ -228,6 +232,7 @@
             z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
           </label>
         </div>
+
         <div class="checkbox-group">
           <input type="checkbox" name="agreement2" id="agreement2" value="email_agreed" required>
           <label for="agreement2">
@@ -235,6 +240,7 @@
             oraz wiadomości SMS. *
           </label>
         </div>
+
         <div class="checkbox-group">
           <input type="checkbox" name="agreement3" id="agreement3" value="phone_agreed">
           <label for="agreement3">
