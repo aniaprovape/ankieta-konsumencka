@@ -25,17 +25,12 @@
             margin-bottom: 20px;
         }
         .logo img {
-            max-width: 150px;
-        }
-        h1 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
+            max-width: 200px; /* Powiększono logotyp */
         }
         .form-row {
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 5px; /* Zmniejszono odstępy między polami */
         }
         label {
             display: block;
@@ -74,6 +69,11 @@
         button:hover {
             background-color: #c4a467;
         }
+        .checkbox-group label {
+            font-size: 12px;
+            display: block;
+            margin-top: 10px;
+        }
         .disclaimer {
             font-size: 12px;
             margin-top: 20px;
@@ -105,7 +105,6 @@
         <div class="logo">
             <img src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg" alt="Nexi One SALT Logo">
         </div>
-        <h1>Ankieta Konsumencka</h1>
         <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST">
             <label for="offer">Wybierz ofertę:</label>
             <select name="offer" id="offer" required>
@@ -151,11 +150,12 @@
             <div class="checkbox-group">
                 <label>
                     <input type="checkbox" name="agreement1" value="agreed" required>
-                    Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych. Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. Działania te będą obejmowały prezentowanie mi informacji o produktach, usługach, konkursach i innych inicjatywach Pro Vape Polska sp. z o.o., w tym prezentowanie spersonalizowanych informacji oraz ofert marketingowych.
+                    Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.<br>
+                    Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. Działania te będą obejmowały prezentowanie mi informacji o produktach, usługach, konkursach i innych inicjatywach Pro Vape Polska sp. z o.o., w tym prezentowanie spersonalizowanych informacji oraz ofert marketingowych. *
                 </label>
                 <label>
                     <input type="checkbox" name="agreement2" value="email_agreed" required>
-                    Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS.
+                    Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS. *
                 </label>
                 <label>
                     <input type="checkbox" name="agreement3" value="phone_agreed">
@@ -177,4 +177,5 @@
     </div>
 </body>
 </html>
+
 
