@@ -1,1 +1,129 @@
 
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankieta Konsumencka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2a2a2a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .radio-group,
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ankieta Konsumencka</h1>
+        <form action="https://formspree.io/f/mwppwdww" method="POST">
+            <label for="offer">Wybierz ofertę:</label>
+            <select name="offer" id="offer" required>
+                <option value="NEXIONE Aspire | Salt">NEXIONE Aspire | Salt</option>
+                <option value="CRISTALLITE Salt">CRISTALLITE Salt</option>
+            </select>
+
+            <label for="first_name">Imię:</label>
+            <input type="text" name="first_name" id="first_name" required>
+
+            <label for="last_name">Nazwisko:</label>
+            <input type="text" name="last_name" id="last_name" required>
+
+            <label for="email">Adres e-mail:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="phone">Nr telefonu:</label>
+            <input type="text" name="phone" id="phone" required>
+
+            <label for="birth_date">Data urodzenia:</label>
+            <input type="date" name="birth_date" id="birth_date" required>
+
+            <label for="zip_code">Kod pocztowy:</label>
+            <input type="text" name="zip_code" id="zip_code" required>
+
+            <label>Zdjęcie paragonu:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="receipt" value="tak" required> TAK</label>
+                <label><input type="radio" name="receipt" value="nie" required> NIE</label>
+            </div>
+
+            <label>Zgody:</label>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="agreement1" value="agreed" required>
+                    Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych. *
+                </label>
+                <label>
+                    <input type="checkbox" name="agreement2" value="agreed" required>
+                    Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. w celu prowadzenia działań marketingowych. *
+                </label>
+                <label>
+                    <input type="checkbox" name="agreement3" value="email_agreed">
+                    Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS.
+                </label>
+                <label>
+                    <input type="checkbox" name="agreement4" value="phone_agreed">
+                    Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
+                </label>
+            </div>
+            <p class="note">* Zgoda wymagana.</p>
+
+            <button type="submit">Wyślij</button>
+        </form>
+    </div>
+</body>
+</html>
