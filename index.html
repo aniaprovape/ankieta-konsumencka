@@ -32,8 +32,6 @@
       margin: 15px 20px 5px 20px;
       font-size: 14px;
     }
-    /* Ujednolicona szerokość inputów i selecta,
-       tak aby były podłużne i jednakowej szerokości */
     input, select {
       width: calc(100% - 40px);
       padding: 10px;
@@ -44,20 +42,11 @@
       color: #141B4D;
       box-sizing: border-box;
     }
-
-    /* Kontener na wszystkie pola tekstowe i selecty */
     .input-container {
-      /* Brak szczególnych stylów – służy głównie do logicznego podziału */
+      /* służy głównie do logicznego podziału */
     }
-
-    /* Kontener na checkboxy, radiobuttony i ich etykiety */
     .checkbox-container {
       margin: 15px 20px;
-    }
-
-    /* Checkboxy i radiobuttony TAK/NIE */
-    .checkbox-group, .radio-group {
-      margin-bottom: 15px;
     }
 
     /* Radiobuttony (TAK/NIE) – inline, aby były obok siebie */
@@ -72,20 +61,21 @@
       vertical-align: middle;
     }
 
-    /* Checkbox i jego etykieta:
-       - brak flex
-       - check-box przed tekstem
-       - tekst zawija się w razie potrzeby */
-    .checkbox-group input {
-      margin-right: 10px;
+    /* Nowa klasa wymuszająca checkbox i etykietę w jednej linii */
+    .checkbox-group-inline {
+      display: flex;
+      align-items: center; 
+      margin-bottom: 10px;
+    }
+    .checkbox-group-inline input {
+      margin-right: 10px; 
       vertical-align: middle;
     }
-    .checkbox-group label {
-      display: inline-block;
+    .checkbox-group-inline label {
       font-size: 12px;
-      line-height: 1.5;
+      line-height: 1.4;
       cursor: pointer;
-      vertical-align: middle;
+      margin: 0; /* można dostosować wedle potrzeb */
     }
 
     button {
@@ -193,8 +183,11 @@
           </label>
         </div>
 
-        <!-- Checkboksy ze zgodami -->
-        <div class="checkbox-group">
+        <!-- Tytuł „Zgody” przed checkboxami -->
+        <h3 style="margin: 20px 0 10px; font-size: 14px;">Zgody</h3>
+
+        <!-- Checkboksy ze zgodami (w jednej linii) -->
+        <div class="checkbox-group-inline">
           <input type="checkbox" name="agreement1" id="agreement1" value="agreed" required>
           <label for="agreement1">
             Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.<br>
@@ -203,14 +196,16 @@
             z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
           </label>
         </div>
-        <div class="checkbox-group">
+
+        <div class="checkbox-group-inline">
           <input type="checkbox" name="agreement2" id="agreement2" value="email_agreed" required>
           <label for="agreement2">
             Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) 
             oraz wiadomości SMS. *
           </label>
         </div>
-        <div class="checkbox-group">
+
+        <div class="checkbox-group-inline">
           <input type="checkbox" name="agreement3" id="agreement3" value="phone_agreed">
           <label for="agreement3">
             Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
@@ -235,4 +230,3 @@
   </div>
 </body>
 </html>
-
