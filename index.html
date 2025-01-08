@@ -67,22 +67,22 @@
         button:hover {
             background-color: #c4a467;
         }
-        .checkbox-group {
+        .checkbox-container {
             margin: 15px 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+        }
+        .checkbox-group {
+            margin-bottom: 15px;
+            display: block;
         }
         .checkbox-group input {
-            margin-top: 5px;
-            flex-shrink: 0;
+            vertical-align: top;
+            margin-right: 10px;
         }
         .checkbox-group label {
             font-size: 12px;
             line-height: 1.5;
-            margin: 0;
             display: inline-block;
-            flex-grow: 1;
+            vertical-align: top;
         }
         .disclaimer {
             font-size: 12px;
@@ -110,7 +110,7 @@
             .logo img {
                 max-width: 150px;
             }
-            label, input, select, .radio-group, button, .checkbox-group, .note, .disclaimer, .nicotine-warning {
+            label, input, select, .radio-group, button, .checkbox-container, .note, .disclaimer, .nicotine-warning {
                 margin-left: 10px;
                 margin-right: 10px;
             }
@@ -156,25 +156,26 @@
                 <label><input type="radio" name="receipt" value="nie" required> NIE</label>
             </div>
 
-            <label>Zgody:</label>
-            <div class="checkbox-group">
-                <input type="checkbox" name="agreement1" value="agreed" required>
-                <label>
-                    Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.<br>
-                    Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
-                </label>
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" name="agreement2" value="email_agreed" required>
-                <label>
-                    Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS. *
-                </label>
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" name="agreement3" value="phone_agreed">
-                <label>
-                    Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
-                </label>
+            <div class="checkbox-container">
+                <div class="checkbox-group">
+                    <input type="checkbox" name="agreement1" value="agreed" required>
+                    <label>
+                        Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.<br>
+                        Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp. z o.o. z siedzibą w Opocznie w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego, z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" name="agreement2" value="email_agreed" required>
+                    <label>
+                        Wyrażam zgodę na przesyłanie informacji marketingowych za pośrednictwem poczty elektronicznej (e-mail) oraz wiadomości SMS. *
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" name="agreement3" value="phone_agreed">
+                    <label>
+                        Wyrażam zgodę na kontakt telefoniczny, w tym połączenia głosowe.
+                    </label>
+                </div>
             </div>
 
             <p class="note">* Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.</p>
@@ -192,3 +193,4 @@
     </div>
 </body>
 </html>
+
