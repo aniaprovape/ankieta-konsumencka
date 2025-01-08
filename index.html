@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ankieta Konsumencka</title>
   <style>
-
     body {
       font-family: Arial, sans-serif;
       background-color: #141B4D;
@@ -33,9 +32,8 @@
       margin: 15px 20px 5px 20px;
       font-size: 14px;
     }
-
     button {
-      margin: 20px 20px 0 20px; 
+      margin: 20px 20px 0 20px;
       padding: 10px 15px;
       width: calc(100% - 40px);
       background-color: #D5B578;
@@ -53,12 +51,11 @@
       background: white;
       color: black;
       border: 2px solid black;
-padding: 10px 0;
+      padding: 10px 0;
       font-size: 14px;
       font-weight: bold;
       text-align: center;
-    
-      margin: 20px 20px 0 20px; 
+      margin: 20px 20px 0 20px;
       border-radius: 5px;
     }
     .note {
@@ -69,8 +66,6 @@ padding: 10px 0;
       font-size: 12px;
       margin: 20px 20px 0 20px;
     }
-
-
     .input-container input[type="text"],
     .input-container input[type="email"],
     .input-container input[type="date"],
@@ -86,13 +81,9 @@ padding: 10px 0;
       color: #141B4D;
       box-sizing: border-box;
     }
-
-
     .checkbox-container {
       margin: 15px 20px;
     }
-
-
     .radio-group {
       margin-bottom: 15px;
     }
@@ -106,16 +97,14 @@ padding: 10px 0;
       margin-right: 5px;
       vertical-align: middle;
     }
-
-
     .checkbox-group {
-      display: flex;          
+      display: flex;
       align-items: flex-start;
       margin-bottom: 15px;
     }
     .checkbox-group input[type="checkbox"] {
       margin-right: 10px;
-      margin-top: 4px;         
+      margin-top: 4px;
       flex-shrink: 0;
     }
     .checkbox-group label {
@@ -123,13 +112,11 @@ padding: 10px 0;
       line-height: 1.5;
       cursor: pointer;
     }
-
-
     .file-upload {
       margin: 0 20px 15px 20px;
     }
     .file-upload label {
-      margin: 15px 0 5px 0; 
+      margin: 15px 0 5px 0;
     }
     .file-upload input[type="file"] {
       background: none;
@@ -137,10 +124,7 @@ padding: 10px 0;
       border: none;
       margin-top: 5px;
       font-size: 14px;
-
     }
-
-
     @media (max-width: 600px) {
       .container {
         padding: 15px;
@@ -148,7 +132,6 @@ padding: 10px 0;
       .logo img {
         max-width: 150px;
       }
-     
       button, .nicotine-warning {
         margin: 20px 10px 0 10px !important;
         width: calc(100% - 20px);
@@ -162,49 +145,48 @@ padding: 10px 0;
 </head>
 <body>
   <div class="container">
-    <!-- Logo -->
     <div class="logo">
       <img 
         src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
         alt="Nexi One SALT Logo">
     </div>
-    
-    <!-- Formularz -->
     <form action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" method="POST" enctype="multipart/form-data">
-      
-      <!-- Pola tekstowe i select -->
       <div class="input-container">
         <label for="offer">Wybierz ofertę:</label>
         <select name="offer" id="offer" required>
           <option value="NEXIONE Aspire | Salt">NEXIONE Aspire | Salt</option>
           <option value="CRISTALLITE Salt">CRISTALLITE Salt</option>
         </select>
-
         <label for="first_name">Imię:</label>
         <input type="text" name="first_name" id="first_name" required>
-
         <label for="last_name">Nazwisko:</label>
         <input type="text" name="last_name" id="last_name" required>
-
         <label for="email">Adres e-mail:</label>
         <input type="email" name="email" id="email" required>
-
         <label for="phone">Nr telefonu:</label>
         <input type="text" name="phone" id="phone" required>
-
         <label for="birth_date">Data urodzenia:</label>
         <input type="date" name="birth_date" id="birth_date" required>
-
         <label for="zip_code">Kod pocztowy:</label>
         <input type="text" name="zip_code" id="zip_code" required>
-
         <label for="consumer_source">Źródło konsumenta:</label>
         <input type="text" name="consumer_source" id="consumer_source" required>
+        <label for="survey_filler">Osoba wypełniająca ankietę:</label>
+        <select name="survey_filler" id="survey_filler" required>
+          <option value="Artur Janicki">Artur Janicki</option>
+          <option value="Marcin Kijak">Marcin Kijak</option>
+          <option value="Robert Horbal">Robert Horbal</option>
+          <option value="Paweł Krzak">Paweł Krzak</option>
+          <option value="Patryk Szymański">Patryk Szymański</option>
+          <option value="Marcin Wieland">Marcin Wieland</option>
+          <option value="Piotr Krawczyk">Piotr Krawczyk</option>
+          <option value="Jacek Tatarek">Jacek Tatarek</option>
+          <option value="Roman Krajewski">Roman Krajewski</option>
+          <option value="Paweł Bareja">Paweł Bareja</option>
+          <option value="Adrian Maciejczyk">Adrian Maciejczyk</option>
+        </select>
       </div>
-
-      <!-- Checkboksy + Radiobuttony (zgody, paragon) -->
       <div class="checkbox-container">
-        <!-- Radiobuttony TAK/NIE -->
         <label>Zdjęcie paragonu:</label>
         <div class="radio-group">
           <label>
@@ -216,14 +198,10 @@ padding: 10px 0;
             NIE
           </label>
         </div>
-
-        <!-- Pole do wgrania pliku (zdjęcia paragonu) -->
         <div class="file-upload">
           <label for="receiptFile">Załącz zdjęcie paragonu:</label>
           <input type="file" id="receiptFile" name="receiptFile" accept="image/*" />
         </div>
-
-        <!-- Checkboksy w wielu liniach (tekst nie wyjeżdża poza ramkę) -->
         <div class="checkbox-group">
           <input type="checkbox" name="agreement1" id="agreement1" value="agreed" required>
           <label for="agreement1">
@@ -233,7 +211,6 @@ padding: 10px 0;
             z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych. *
           </label>
         </div>
-
         <div class="checkbox-group">
           <input type="checkbox" name="agreement2" id="agreement2" value="email_agreed" required>
           <label for="agreement2">
@@ -241,7 +218,6 @@ padding: 10px 0;
             oraz wiadomości SMS. *
           </label>
         </div>
-
         <div class="checkbox-group">
           <input type="checkbox" name="agreement3" id="agreement3" value="phone_agreed">
           <label for="agreement3">
@@ -249,8 +225,6 @@ padding: 10px 0;
           </label>
         </div>
       </div>
-      
-      <!-- Notka, ostrzeżenie, przycisk, disclaimer -->
       <p class="note">
         * Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.
       </p>
@@ -267,4 +241,5 @@ padding: 10px 0;
   </div>
 </body>
 </html>
+
 
