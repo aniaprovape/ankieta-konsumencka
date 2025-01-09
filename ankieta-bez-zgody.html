@@ -121,8 +121,8 @@
       width: 100%;
       height: 250px;
       background: #ffffff;
-      touch-action: none;
       margin-bottom: 15px;
+      touch-action: none;
     }
     .clear-signature-button {
       width: auto;
@@ -158,6 +158,9 @@
       .input-text {
         width: calc(100% - 20px);
         margin: 0 10px 20px 10px;
+      }
+      .signature-container {
+        margin: 20px 10px;
       }
     }
   </style>
@@ -253,60 +256,77 @@
     </form>
   </div>
   <script>
-    let canvas = document.getElementById("signatureCanvas");
-    let ctx = canvas.getContext("2d");
+    const canvas = document.getElementById("signatureCanvas");
+    const ctx = canvas.getContext("2d");
     let drawing = false;
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
     function getPosition(e) {
-      let r = canvas.getBoundingClientRect();
-      if(e.touches && e.touches.length > 0) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
         return {
-          x: e.touches[0].clientX - r.left,
-          y: e.touches[0].clientY - r.top
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top
         };
       } else {
         return {
-          x: e.clientX - r.left,
-          y: e.clientY - r.top
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
         };
       }
     }
-    canvas.addEventListener("mousedown", e => {
+
+    function startDrawing(e) {
+      e.preventDefault();
       drawing = true;
-      let p = getPosition(e);
       ctx.beginPath();
+      const p = getPosition(e);
       ctx.moveTo(p.x, p.y);
-    });
-    canvas.addEventListener("mousemove", e => {
-      if(!drawing) return;
-      let p = getPosition(e);
+    }
+
+    function draw(e) {
+      e.preventDefault();
+      if (!drawing) return;
+      const p = getPosition(e);
       ctx.lineTo(p.x, p.y);
       ctx.stroke();
-    });
-    canvas.addEventListener("mouseup", e => {
+    }
+
+    function endDrawing(e) {
+      e.preventDefault();
       drawing = false;
-    });
-    canvas.addEventListener("touchstart", e => {
-      drawing = true;
-      let p = getPosition(e);
-      ctx.beginPath();
-      ctx.moveTo(p.x, p.y);
-    });
-    canvas.addEventListener("touchmove", e => {
-      if(!drawing) return;
-      let p = getPosition(e);
-      ctx.lineTo(p.x, p.y);
-      ctx.stroke();
-    });
-    canvas.addEventListener("touchend", e => {
-      drawing = false;
-    });
+    }
+
     function clearCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+
     function saveSignature() {
-      let dataURL = canvas.toDataURL("image/png");
+      const dataURL = canvas.toDataURL("image/png");
       document.getElementById("signature").value = dataURL;
     }
+
+    window.addEventListener("load", () => {
+      resizeCanvas();
+    });
+
+    window.addEventListener("resize", () => {
+      const savedData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      resizeCanvas();
+      ctx.putImageData(savedData, 0, 0);
+    });
+
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", endDrawing);
+
+    canvas.addEventListener("touchstart", startDrawing, { passive: false });
+    canvas.addEventListener("touchmove", draw, { passive: false });
+    canvas.addEventListener("touchend", endDrawing, { passive: false });
   </script>
 </body>
 </html>
