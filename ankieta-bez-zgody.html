@@ -11,37 +11,39 @@
       color: #D5B578;
       margin: 0;
       padding: 0;
+      font-size: 16px;
+      line-height: 1.5;
     }
     .container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 30px;
       background: #141B4D;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
     .logo {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .logo img {
-      max-width: 220px;
+      max-width: 260px;
     }
     label {
       display: block;
-      margin: 15px 20px 5px 20px;
-      font-size: 14px;
+      margin: 20px 20px 8px 20px;
+      font-size: 18px;
     }
     button {
-      margin: 20px 20px 0 20px;
-      padding: 10px 15px;
+      margin: 30px 20px 0 20px;
+      padding: 15px 20px;
       width: calc(100% - 40px);
       background-color: #D5B578;
       color: #141B4D;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
     }
     button:hover {
@@ -51,96 +53,76 @@
       background: white;
       color: black;
       border: 2px solid black;
-      padding: 10px 0;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: bold;
       text-align: center;
-      margin: 20px 20px 0 20px;
+      margin: 30px 20px 0 20px;
       border-radius: 5px;
-    }
-    .note {
-      font-size: 12px;
-      margin: 10px 20px;
+      padding: 10px 0;
     }
     .disclaimer {
-      font-size: 12px;
-      margin: 20px 20px 0 20px;
+      font-size: 14px;
+      margin: 30px 20px 0 20px;
+      text-align: center;
     }
-    .input-container input[type="text"],
-    .input-container input[type="email"],
-    .input-container input[type="date"],
-    .input-container input[type="tel"],
-    .input-container input[type="number"],
-    .input-container select {
+    .section-title {
+      margin: 20px 20px 10px 20px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      margin: 0 20px 20px 20px;
+      gap: 20px;
+    }
+    .input-row label {
+      margin: 0;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .input-row input[type="radio"],
+    .input-row input[type="checkbox"] {
+      margin-right: 8px;
+      flex-shrink: 0;
+      transform: scale(1.2);
+    }
+    .input-text {
       width: calc(100% - 40px);
-      padding: 10px;
-      margin: 0 20px 15px 20px;
+      padding: 15px;
+      margin: 0 20px 20px 20px;
       border: 1px solid #D5B578;
       border-radius: 5px;
       background: #ECDEDB;
       color: #141B4D;
       box-sizing: border-box;
-    }
-    .checkbox-container {
-      margin: 15px 20px;
-    }
-    .radio-group {
-      margin-bottom: 15px;
-    }
-    .radio-group label {
-      display: inline-block;
-      font-size: 14px;
-      margin-right: 15px;
-      cursor: pointer;
-    }
-    .radio-group input[type="radio"] {
-      margin-right: 5px;
-      vertical-align: middle;
-    }
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 15px;
-    }
-    .checkbox-group input[type="checkbox"] {
-      margin-right: 10px;
-      margin-top: 4px;
-      flex-shrink: 0;
-    }
-    .checkbox-group label {
-      font-size: 12px;
-      line-height: 1.5;
-      cursor: pointer;
+      font-size: 16px;
     }
     .file-upload {
-      margin: 0 20px 15px 20px;
-    }
-    .file-upload label {
-      margin: 15px 0 5px 0;
+      margin: 0 20px 20px 20px;
     }
     .file-upload input[type="file"] {
       background: none;
       color: #D5B578;
       border: none;
-      margin-top: 5px;
-      font-size: 14px;
+      font-size: 16px;
+      margin-top: 8px;
     }
     .signature-container {
-      display: block;
-      margin: 15px 20px 0 20px;
+      margin: 20px 20px;
     }
     .signature-container label {
-      margin: 0 0 5px 0;
-      font-size: 14px;
+      margin: 0 0 8px 0;
+      font-size: 18px;
     }
     .signature-canvas {
       border: 1px solid #D5B578;
       border-radius: 5px;
       width: 100%;
-      height: 200px;
+      height: 250px;
       background: #ffffff;
+      margin-bottom: 15px;
       touch-action: none;
-      margin-bottom: 10px;
     }
     .clear-signature-button {
       width: auto;
@@ -148,27 +130,37 @@
       color: #141B4D;
       border: 1px solid #D5B578;
       border-radius: 5px;
-      padding: 5px 10px;
+      padding: 8px 15px;
       cursor: pointer;
-      margin-bottom: 15px;
+      font-size: 16px;
     }
     .clear-signature-button:hover {
       background-color: #d2c2bf;
     }
     @media (max-width: 600px) {
       .container {
-        padding: 15px;
+        padding: 20px;
       }
       .logo img {
-        max-width: 150px;
+        max-width: 180px;
       }
       button, .nicotine-warning {
         margin: 20px 10px 0 10px !important;
         width: calc(100% - 20px);
       }
-      label, .note, .disclaimer {
+      .disclaimer, .section-title, label {
         margin-left: 10px;
         margin-right: 10px;
+      }
+      .input-row {
+        flex-wrap: wrap;
+      }
+      .input-text {
+        width: calc(100% - 20px);
+        margin: 0 10px 20px 10px;
+      }
+      .signature-container {
+        margin: 20px 10px;
       }
     }
   </style>
@@ -182,100 +174,100 @@
     </div>
     <form action="https://formsubmit.co/tomasz@pro-vape.pl" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
       <input type="hidden" name="_cc" value="anna.nechytailova@pro-vape.pl">
-      <div class="input-container">
-        <label for="offer">Wybierz ofertę:</label>
-        <select name="offer" id="offer" required>
-          <option value="NEXIONE Aspire | Salt">NEXIONE Aspire | Salt</option>
-          <option value="CRISTALLITE Salt">CRISTALLITE Salt</option>
-        </select>
-        <label for="first_name">Imię:</label>
-        <input type="text" name="first_name" id="first_name" required>
-        <label for="last_name">Nazwisko:</label>
-        <input type="text" name="last_name" id="last_name" required>
-        <label for="email">Adres e-mail:</label>
-        <input type="email" name="email" id="email" required>
-        <label for="phone">Nr telefonu:</label>
-        <input type="text" name="phone" id="phone" required>
-        <label for="birth_date">Data urodzenia:</label>
-        <input type="date" name="birth_date" id="birth_date" required>
-        <label for="zip_code">Kod pocztowy:</label>
-        <input type="text" name="zip_code" id="zip_code" required>
-        <label for="consumer_source">Źródło konsumenta:</label>
-        <input type="text" name="consumer_source" id="consumer_source" required>
+
+      <p class="section-title">
+        1. Wybierz ofertę, którą zainteresowany jest konsument:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="checkbox" name="offer[]" value="NEXIONE Aspire">
+          NEXIONE Aspire
+        </label>
+        <label>
+          <input type="checkbox" name="offer[]" value="SALT">
+          SALT
+        </label>
       </div>
-      <div class="checkbox-container">
-        <label>Zdjęcie paragonu:</label>
-        <div class="radio-group">
-          <label>
-            <input type="radio" name="receipt" value="tak" required>
-            TAK
-          </label>
-          <label>
-            <input type="radio" name="receipt" value="nie" required>
-            NIE
-          </label>
-        </div>
-        <div class="file-upload">
-          <label for="receiptFile">Załącz zdjęcie paragonu:</label>
-          <input type="file" id="receiptFile" name="receiptFile" accept="image/*" />
-        </div>
-        <label for="survey_filler">Ankieter:</label>
-        <select name="survey_filler" id="survey_filler" required>
-          <option value="" selected disabled hidden></option>
-          <option value="Artur Janicki">Artur Janicki</option>
-          <option value="Marcin Kijak">Marcin Kijak</option>
-          <option value="Robert Horbal">Robert Horbal</option>
-          <option value="Paweł Krzak">Paweł Krzak</option>
-          <option value="Patryk Szymański">Patryk Szymański</option>
-          <option value="Marcin Wieland">Marcin Wieland</option>
-          <option value="Piotr Krawczyk">Piotr Krawczyk</option>
-          <option value="Jacek Tatarek">Jacek Tatarek</option>
-          <option value="Roman Krajewski">Roman Krajewski</option>
-          <option value="Paweł Bareja">Paweł Bareja</option>
-          <option value="Adrian Maciejczyk">Adrian Maciejczyk</option>
-        </select>
-        <div class="checkbox-group">
-          <input type="checkbox" name="agreement1" id="agreement1" value="agreed" required>
-          <label for="agreement1">
-            Oświadczam, że jestem pełnoletnim użytkownikiem wyrobów tytoniowych i/lub wyrobów powiązanych.*<br>
-            Wyrażam zgodę na przetwarzanie moich danych osobowych przez Pro Vape Polska sp z o o z siedzibą w Opocznie
-w celu prowadzenia przez ten podmiot niepublicznych działań o charakterze marketingu bezpośredniego,
-z wykorzystaniem profilowania moich danych osobowych oraz badania moich decyzji zakupowych Działania te
-będą obejmowały prezentowanie mi informacji o produktach, usługach, konkursach i innych inicjatywach Pro Vape
-Polska sp z o o w tym prezentowanie spersonalizowanych informacji oraz ofert marketingowych:
-          </label>
-        </div>
-        <div class="checkbox-group">
-          <input type="checkbox" name="agreement2" id="agreement2" value="email_agreed" required>
-          <label for="agreement2">
-            za pośrednictwem poczty elektronicznej (e mail) oraz wiadomości tekstowych SMS*
-          </label>
-        </div>
-        <div class="checkbox-group">
-          <input type="checkbox" name="agreement3" id="agreement3" value="phone_agreed">
-          <label for="agreement3">
-            poprzez
-kontakt telefoniczny, w tym połączenia głosowe.
-          </label>
-        </div>
+
+      <p class="section-title">
+        2. Informacje o konsumencie:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="gender" value="Kobieta">
+          Kobieta
+        </label>
+        <label>
+          <input type="radio" name="gender" value="Mężczyzna">
+          Mężczyzna
+        </label>
       </div>
-      <p class="note">
-        * Zgody oznaczone jako wymagane muszą być zaznaczone, aby przesłać formularz.
+      <div class="input-row">
+        <label>
+          <input type="radio" name="age" value="20–35 lat">
+          20–35 lat
+        </label>
+        <label>
+          <input type="radio" name="age" value="36–45 lat">
+          36–45 lat
+        </label>
+        <label>
+          <input type="radio" name="age" value="powyżej 50 lat">
+          pow. 50 lat
+        </label>
+      </div>
+      <input class="input-text" type="text" name="store_address_1" placeholder="Adres sklepu">
+      <input class="input-text" type="text" name="store_address_2" placeholder="Adres sklepu">
+
+      <label for="survey_filler">Ankieter:</label>
+      <select name="survey_filler" id="survey_filler" required style="width: calc(100% - 40px); padding: 15px; margin: 0 20px 20px 20px; border: 1px solid #D5B578; border-radius: 5px; background: #ECDEDB; color: #141B4D; font-size: 16px; box-sizing: border-box;">
+        <option value="" selected disabled hidden></option>
+        <option value="Artur Janicki">Artur Janicki</option>
+        <option value="Marcin Kijak">Marcin Kijak</option>
+        <option value="Robert Horbal">Robert Horbal</option>
+        <option value="Paweł Krzak">Paweł Krzak</option>
+        <option value="Patryk Szymański">Patryk Szymański</option>
+        <option value="Marcin Wieland">Marcin Wieland</option>
+        <option value="Piotr Krawczyk">Piotr Krawczyk</option>
+        <option value="Jacek Tatarek">Jacek Tatarek</option>
+        <option value="Roman Krajewski">Roman Krajewski</option>
+        <option value="Paweł Bareja">Paweł Bareja</option>
+        <option value="Adrian Maciejczyk">Adrian Maciejczyk</option>
+      </select>
+
+      <p class="section-title">
+        3. Zdjęcie paragonu:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="receipt" value="tak" required>
+          TAK
+        </label>
+        <label>
+          <input type="radio" name="receipt" value="nie" required>
+          NIE
+        </label>
+      </div>
+      <div class="file-upload">
+        <input type="file" name="receiptFile" accept="image/*">
+      </div>
+
+      <p class="section-title">
+        4. Podpis osoby
       </p>
       <div class="signature-container">
-        <label for="signatureCanvas">Podpis:</label>
+        <label for="signatureCanvas">Podpis (narysuj palcem lub myszką):</label>
         <canvas id="signatureCanvas" class="signature-canvas"></canvas>
         <input type="hidden" name="signature" id="signature">
         <button type="button" class="clear-signature-button" onclick="clearCanvas()">Wyczyść podpis</button>
       </div>
+
       <div class="nicotine-warning">
         Wyrób zawiera nikotynę, która powoduje uzależnienie.
       </div>
       <button type="submit">Wyślij</button>
       <p class="disclaimer">
-        Pamiętaj, że zawsze możesz wycofać powyższe zgody na przetwarzanie Twoich danych osobowych.
-        Aby wycofać swoje zgody, skontaktuj się z nami pod adresem: biuro@pro-vape.pl.
-        Twoje dane będą przetwarzane wyłącznie w tych celach, na które wyraziłeś/aś swoją zgodę powyżej.
+        informacja przeznaczona wyłącznie do użytku wewnętrznego dla pracowników PRO VAPE Polska sp. z o.o.
       </p>
     </form>
   </div>
@@ -354,4 +346,5 @@ kontakt telefoniczny, w tym połączenia głosowe.
   </script>
 </body>
 </html>
+
 
