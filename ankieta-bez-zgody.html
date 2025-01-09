@@ -11,37 +11,39 @@
       color: #D5B578;
       margin: 0;
       padding: 0;
+      font-size: 16px;
+      line-height: 1.5;
     }
     .container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 30px;
       background: #141B4D;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
     .logo {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .logo img {
-      max-width: 220px;
+      max-width: 260px;
     }
     label {
       display: block;
-      margin: 15px 20px 5px 20px;
-      font-size: 14px;
+      margin: 20px 20px 8px 20px;
+      font-size: 18px;
     }
     button {
-      margin: 20px 20px 0 20px;
-      padding: 10px 15px;
+      margin: 30px 20px 0 20px;
+      padding: 15px 20px;
       width: calc(100% - 40px);
       background-color: #D5B578;
       color: #141B4D;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
     }
     button:hover {
@@ -51,80 +53,76 @@
       background: white;
       color: black;
       border: 2px solid black;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: bold;
       text-align: center;
-      margin: 20px 20px 0 20px;
+      margin: 30px 20px 0 20px;
       border-radius: 5px;
       padding: 10px 0;
     }
-    .note {
-      font-size: 12px;
-      margin: 10px 20px;
-    }
     .disclaimer {
-      font-size: 12px;
-      margin: 20px 20px 0 20px;
+      font-size: 14px;
+      margin: 30px 20px 0 20px;
       text-align: center;
     }
     .section-title {
-      margin: 15px 20px 10px 20px;
+      margin: 20px 20px 10px 20px;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 20px;
     }
     .input-row {
       display: flex;
       align-items: center;
-      margin: 0 20px 15px 20px;
-      gap: 15px;
+      margin: 0 20px 20px 20px;
+      gap: 20px;
     }
     .input-row label {
       margin: 0;
-      font-size: 14px;
+      font-size: 18px;
       cursor: pointer;
     }
-    .input-row input[type="checkbox"],
-    .input-row input[type="radio"] {
-      margin-right: 5px;
+    .input-row input[type="radio"],
+    .input-row input[type="checkbox"] {
+      margin-right: 8px;
       flex-shrink: 0;
+      transform: scale(1.2);
     }
     .input-text {
       width: calc(100% - 40px);
-      padding: 10px;
-      margin: 0 20px 15px 20px;
+      padding: 15px;
+      margin: 0 20px 20px 20px;
       border: 1px solid #D5B578;
       border-radius: 5px;
       background: #ECDEDB;
       color: #141B4D;
       box-sizing: border-box;
-      font-size: 14px;
+      font-size: 16px;
     }
     .file-upload {
-      margin: 0 20px 15px 20px;
+      margin: 0 20px 20px 20px;
     }
     .file-upload input[type="file"] {
       background: none;
       color: #D5B578;
       border: none;
-      font-size: 14px;
-      margin-top: 5px;
+      font-size: 16px;
+      margin-top: 8px;
     }
     .signature-container {
-      display: none;
-      margin: 15px 20px 0 20px;
+      margin: 20px 20px;
     }
     .signature-container label {
-      margin: 0 0 5px 0;
-      font-size: 14px;
+      margin: 0 0 8px 0;
+      font-size: 18px;
     }
     .signature-canvas {
       border: 1px solid #D5B578;
       border-radius: 5px;
       width: 100%;
-      height: 200px;
+      height: 250px;
       background: #ffffff;
       touch-action: none;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .clear-signature-button {
       width: auto;
@@ -132,38 +130,34 @@
       color: #141B4D;
       border: 1px solid #D5B578;
       border-radius: 5px;
-      padding: 5px 10px;
+      padding: 8px 15px;
       cursor: pointer;
-      margin-bottom: 15px;
+      font-size: 16px;
     }
     .clear-signature-button:hover {
       background-color: #d2c2bf;
     }
     @media (max-width: 600px) {
       .container {
-        padding: 15px;
+        padding: 20px;
       }
       .logo img {
-        max-width: 150px;
+        max-width: 180px;
       }
       button, .nicotine-warning {
         margin: 20px 10px 0 10px !important;
         width: calc(100% - 20px);
       }
-      label, .disclaimer, .note {
+      .disclaimer, .section-title, label {
         margin-left: 10px;
         margin-right: 10px;
       }
       .input-row {
         flex-wrap: wrap;
-        gap: 10px;
       }
       .input-text {
         width: calc(100% - 20px);
-        margin: 0 10px 15px 10px;
-      }
-      .signature-container {
-        display: block;
+        margin: 0 10px 20px 10px;
       }
     }
   </style>
@@ -197,25 +191,25 @@
       </p>
       <div class="input-row">
         <label>
-          <input type="checkbox" name="gender[]" value="Kobieta">
+          <input type="radio" name="gender" value="Kobieta">
           Kobieta
         </label>
         <label>
-          <input type="checkbox" name="gender[]" value="Mężczyzna">
+          <input type="radio" name="gender" value="Mężczyzna">
           Mężczyzna
         </label>
       </div>
       <div class="input-row">
         <label>
-          <input type="checkbox" name="age[]" value="20–35 lat">
+          <input type="radio" name="age" value="20–35 lat">
           20–35 lat
         </label>
         <label>
-          <input type="checkbox" name="age[]" value="36–45 lat">
+          <input type="radio" name="age" value="36–45 lat">
           36–45 lat
         </label>
         <label>
-          <input type="checkbox" name="age[]" value="powyżej 50 lat">
+          <input type="radio" name="age" value="powyżej 50 lat">
           pow. 50 lat
         </label>
       </div>
@@ -243,7 +237,7 @@
         4. Podpis osoby
       </p>
       <div class="signature-container">
-        <label for="signatureCanvas">Podpis:</label>
+        <label for="signatureCanvas">Podpis (narysuj palcem lub myszką):</label>
         <canvas id="signatureCanvas" class="signature-canvas"></canvas>
         <input type="hidden" name="signature" id="signature">
         <button type="button" class="clear-signature-button" onclick="clearCanvas()">Wyczyść podpis</button>
@@ -264,11 +258,33 @@
     let drawing = false;
     function getPosition(e) {
       let r = canvas.getBoundingClientRect();
-      return {
-        x: e.touches[0].clientX - r.left,
-        y: e.touches[0].clientY - r.top
-      };
+      if(e.touches && e.touches.length > 0) {
+        return {
+          x: e.touches[0].clientX - r.left,
+          y: e.touches[0].clientY - r.top
+        };
+      } else {
+        return {
+          x: e.clientX - r.left,
+          y: e.clientY - r.top
+        };
+      }
     }
+    canvas.addEventListener("mousedown", e => {
+      drawing = true;
+      let p = getPosition(e);
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+    });
+    canvas.addEventListener("mousemove", e => {
+      if(!drawing) return;
+      let p = getPosition(e);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+    });
+    canvas.addEventListener("mouseup", e => {
+      drawing = false;
+    });
     canvas.addEventListener("touchstart", e => {
       drawing = true;
       let p = getPosition(e);
@@ -276,7 +292,7 @@
       ctx.moveTo(p.x, p.y);
     });
     canvas.addEventListener("touchmove", e => {
-      if (!drawing) return;
+      if(!drawing) return;
       let p = getPosition(e);
       ctx.lineTo(p.x, p.y);
       ctx.stroke();
@@ -294,4 +310,3 @@
   </script>
 </body>
 </html>
-
