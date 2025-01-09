@@ -140,6 +140,20 @@
       height: 200px;
       background: #ffffff;
       touch-action: none;
+      margin-bottom: 10px;
+    }
+    .clear-signature-button {
+      width: auto;
+      background-color: #ECDEDB;
+      color: #141B4D;
+      border: 1px solid #D5B578;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .clear-signature-button:hover {
+      background-color: #d2c2bf;
     }
     @media (max-width: 600px) {
       .container {
@@ -252,6 +266,7 @@
         <label for="signatureCanvas">Podpis:</label>
         <canvas id="signatureCanvas" class="signature-canvas"></canvas>
         <input type="hidden" name="signature" id="signature">
+        <button type="button" class="clear-signature-button" onclick="clearCanvas()">Wyczyść podpis</button>
       </div>
       <div class="nicotine-warning">
         Wyrób zawiera nikotynę, która powoduje uzależnienie.
@@ -290,6 +305,9 @@
     canvas.addEventListener("touchend", e => {
       drawing = false;
     });
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
     function saveSignature() {
       let dataURL = canvas.toDataURL("image/png");
       document.getElementById("signature").value = dataURL;
