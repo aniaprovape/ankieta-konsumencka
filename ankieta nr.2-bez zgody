@@ -1,1 +1,297 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ankieta Konsumencka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #141B4D;
+      color: #D5B578;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #141B4D;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 220px;
+    }
+    label {
+      display: block;
+      margin: 15px 20px 5px 20px;
+      font-size: 14px;
+    }
+    button {
+      margin: 20px 20px 0 20px;
+      padding: 10px 15px;
+      width: calc(100% - 40px);
+      background-color: #D5B578;
+      color: #141B4D;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #c4a467;
+    }
+    .nicotine-warning {
+      background: white;
+      color: black;
+      border: 2px solid black;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 20px 0 20px;
+      border-radius: 5px;
+      padding: 10px 0;
+    }
+    .note {
+      font-size: 12px;
+      margin: 10px 20px;
+    }
+    .disclaimer {
+      font-size: 12px;
+      margin: 20px 20px 0 20px;
+      text-align: center;
+    }
+    .section-title {
+      margin: 15px 20px 10px 20px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      margin: 0 20px 15px 20px;
+      gap: 15px;
+    }
+    .input-row label {
+      margin: 0;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .input-row input[type="checkbox"],
+    .input-row input[type="radio"] {
+      margin-right: 5px;
+      flex-shrink: 0;
+    }
+    .input-text {
+      width: calc(100% - 40px);
+      padding: 10px;
+      margin: 0 20px 15px 20px;
+      border: 1px solid #D5B578;
+      border-radius: 5px;
+      background: #ECDEDB;
+      color: #141B4D;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    .file-upload {
+      margin: 0 20px 15px 20px;
+    }
+    .file-upload input[type="file"] {
+      background: none;
+      color: #D5B578;
+      border: none;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .signature-container {
+      display: none;
+      margin: 15px 20px 0 20px;
+    }
+    .signature-container label {
+      margin: 0 0 5px 0;
+      font-size: 14px;
+    }
+    .signature-canvas {
+      border: 1px solid #D5B578;
+      border-radius: 5px;
+      width: 100%;
+      height: 200px;
+      background: #ffffff;
+      touch-action: none;
+      margin-bottom: 10px;
+    }
+    .clear-signature-button {
+      width: auto;
+      background-color: #ECDEDB;
+      color: #141B4D;
+      border: 1px solid #D5B578;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .clear-signature-button:hover {
+      background-color: #d2c2bf;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      .logo img {
+        max-width: 150px;
+      }
+      button, .nicotine-warning {
+        margin: 20px 10px 0 10px !important;
+        width: calc(100% - 20px);
+      }
+      label, .disclaimer, .note {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .input-row {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .input-text {
+        width: calc(100% - 20px);
+        margin: 0 10px 15px 10px;
+      }
+      .signature-container {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img 
+        src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
+        alt="Nexi One SALT Logo">
+    </div>
+    <form action="https://formsubmit.co/tomasz@pro-vape.pl" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
+      <input type="hidden" name="_cc" value="anna.nechytailova@pro-vape.pl">
+
+      <p class="section-title">
+        1. Wybierz ofertę, którą zainteresowany jest konsument:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="checkbox" name="offer[]" value="NEXIONE Aspire">
+          NEXIONE Aspire
+        </label>
+        <label>
+          <input type="checkbox" name="offer[]" value="SALT">
+          SALT
+        </label>
+      </div>
+
+      <p class="section-title">
+        2. Informacje o konsumencie:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="checkbox" name="gender[]" value="Kobieta">
+          Kobieta
+        </label>
+        <label>
+          <input type="checkbox" name="gender[]" value="Mężczyzna">
+          Mężczyzna
+        </label>
+      </div>
+      <div class="input-row">
+        <label>
+          <input type="checkbox" name="age[]" value="20–35 lat">
+          20–35 lat
+        </label>
+        <label>
+          <input type="checkbox" name="age[]" value="36–45 lat">
+          36–45 lat
+        </label>
+        <label>
+          <input type="checkbox" name="age[]" value="powyżej 50 lat">
+          pow. 50 lat
+        </label>
+      </div>
+      <input class="input-text" type="text" name="store_address_1" placeholder="Adres sklepu">
+      <input class="input-text" type="text" name="store_address_2" placeholder="Adres sklepu">
+
+      <p class="section-title">
+        3. Zdjęcie paragonu:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="receipt" value="tak" required>
+          TAK
+        </label>
+        <label>
+          <input type="radio" name="receipt" value="nie" required>
+          NIE
+        </label>
+      </div>
+      <div class="file-upload">
+        <input type="file" name="receiptFile" accept="image/*">
+      </div>
+
+      <p class="section-title">
+        4. Podpis osoby
+      </p>
+      <div class="signature-container">
+        <label for="signatureCanvas">Podpis:</label>
+        <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+        <input type="hidden" name="signature" id="signature">
+        <button type="button" class="clear-signature-button" onclick="clearCanvas()">Wyczyść podpis</button>
+      </div>
+
+      <div class="nicotine-warning">
+        Wyrób zawiera nikotynę, która powoduje uzależnienie.
+      </div>
+      <button type="submit">Wyślij</button>
+      <p class="disclaimer">
+        informacja przeznaczona wyłącznie do użytku wewnętrznego dla pracowników PRO VAPE Polska sp. z o.o.
+      </p>
+    </form>
+  </div>
+  <script>
+    let canvas = document.getElementById("signatureCanvas");
+    let ctx = canvas.getContext("2d");
+    let drawing = false;
+    function getPosition(e) {
+      let r = canvas.getBoundingClientRect();
+      return {
+        x: e.touches[0].clientX - r.left,
+        y: e.touches[0].clientY - r.top
+      };
+    }
+    canvas.addEventListener("touchstart", e => {
+      drawing = true;
+      let p = getPosition(e);
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+    });
+    canvas.addEventListener("touchmove", e => {
+      if (!drawing) return;
+      let p = getPosition(e);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+    });
+    canvas.addEventListener("touchend", e => {
+      drawing = false;
+    });
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    function saveSignature() {
+      let dataURL = canvas.toDataURL("image/png");
+      document.getElementById("signature").value = dataURL;
+    }
+  </script>
+</body>
+</html>
 
