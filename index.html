@@ -126,7 +126,7 @@
       font-size: 14px;
     }
     .signature-container {
-      display: none;
+      display: block;
       margin: 15px 20px 0 20px;
     }
     .signature-container label {
@@ -169,9 +169,6 @@
       label, .note, .disclaimer {
         margin-left: 10px;
         margin-right: 10px;
-      }
-      .signature-container {
-        display: block;
       }
     }
   </style>
@@ -283,38 +280,66 @@ kontakt telefoniczny, w tym połączenia głosowe.
     </form>
   </div>
   <script>
-    let canvas = document.getElementById("signatureCanvas");
-    let ctx = canvas.getContext("2d");
+    const canvas = document.getElementById("signatureCanvas");
+    const ctx = canvas.getContext("2d");
     let drawing = false;
-    function getPosition(e) {
-      let r = canvas.getBoundingClientRect();
-      return {
-        x: e.touches[0].clientX - r.left,
-        y: e.touches[0].clientY - r.top
-      };
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     }
-    canvas.addEventListener("touchstart", e => {
+    function getPosition(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top
+        };
+      } else {
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+      }
+    }
+    function startDrawing(e) {
+      e.preventDefault();
       drawing = true;
-      let p = getPosition(e);
       ctx.beginPath();
+      const p = getPosition(e);
       ctx.moveTo(p.x, p.y);
-    });
-    canvas.addEventListener("touchmove", e => {
+    }
+    function draw(e) {
+      e.preventDefault();
       if (!drawing) return;
-      let p = getPosition(e);
+      const p = getPosition(e);
       ctx.lineTo(p.x, p.y);
       ctx.stroke();
-    });
-    canvas.addEventListener("touchend", e => {
+    }
+    function endDrawing(e) {
+      e.preventDefault();
       drawing = false;
-    });
+    }
     function clearCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
     function saveSignature() {
-      let dataURL = canvas.toDataURL("image/png");
+      const dataURL = canvas.toDataURL("image/png");
       document.getElementById("signature").value = dataURL;
     }
+    window.addEventListener("load", () => {
+      resizeCanvas();
+    });
+    window.addEventListener("resize", () => {
+      const savedData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      resizeCanvas();
+      ctx.putImageData(savedData, 0, 0);
+    });
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", endDrawing);
+    canvas.addEventListener("touchstart", startDrawing, { passive: false });
+    canvas.addEventListener("touchmove", draw, { passive: false });
+    canvas.addEventListener("touchend", endDrawing, { passive: false });
   </script>
 </body>
 </html>
