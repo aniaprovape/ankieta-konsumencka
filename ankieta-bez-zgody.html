@@ -112,7 +112,7 @@
       const signatureData = canvas.toDataURL("image/png");
       formData.append("signature", signatureData);
 
-      fetch("https://script.google.com/macros/s/AKfycby93MZWW34GgpeWtfENDYnp9CbL1HeZo7w-LauU6ODjOzohGi3Bm9z7Ze4LQLUtFPKn/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwewhBBjsiHDdTWpOJWPrSNULuwYlaNuvTq5F1Yv8rdR1vL5PKL2PBsAxouwiK3NRcA/exec", {
         method: "POST",
         body: formData,
       })
