@@ -172,14 +172,109 @@
         src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
         alt="Nexi One SALT Logo">
     </div>
-   <form action="https://script.google.com/macros/s/AKfycbzmANPAPG4bG5VYMUmE9OFwI7UdOKW5k3X_fyEqXuGIuKg5I7wcrP9c-9f73zSxvRQ6/exec" method="POST">
-  <!-- Twoje pola formularza -->
-  <input type="text" name="first_name" placeholder="Imię" required>
-  <input type="text" name="last_name" placeholder="Nazwisko" required>
-  <input type="email" name="email" placeholder="Adres e-mail" required>
-  <button type="submit">Wyślij</button>
-</form>
+    <form 
+      action="https://formsubmit.co/tomasz@pro-vape.pl"
+      method="POST"
+      enctype="multipart/form-data"
+      onsubmit="saveSignature(); return true;"
+    >
+      <input type="hidden" name="_cc" value="anna.nechytailova@pro-vape.pl">
 
+      <p class="section-title">
+        1. Wybierz ofertę, którą zainteresowany jest konsument:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="checkbox" name="offer[]" value="NEXIONE">
+          NEXIONE Aspire
+        </label>
+        <label>
+          <input type="checkbox" name="offer[]" value="CRISTALLITE">
+          CRISTALLITE
+        </label>
+      </div>
+
+      <p class="section-title">
+        2. Informacje o konsumencie:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="gender" value="Kobieta">
+          Kobieta
+        </label>
+        <label>
+          <input type="radio" name="gender" value="Mężczyzna">
+          Mężczyzna
+        </label>
+      </div>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="age" value="20–35 lat">
+          20–35 lat
+        </label>
+        <label>
+          <input type="radio" name="age" value="36–45 lat">
+          36–45 lat
+        </label>
+        <label>
+          <input type="radio" name="age" value="powyżej 50 lat">
+          pow. 50 lat
+        </label>
+      </div>
+      <input class="input-text" type="text" name="store_address_1" placeholder="Adres sklepu">
+      <input class="input-text" type="text" name="store_address_2" placeholder="Adres sklepu">
+
+      <label for="survey_filler">Ankieter:</label>
+      <select name="survey_filler" id="survey_filler" required style="width: calc(100% - 40px); padding: 15px; margin: 0 20px 20px 20px; border: 1px solid #D5B578; border-radius: 5px; background: #ECDEDB; color: #141B4D; font-size: 16px; box-sizing: border-box;">
+        <option value="" selected disabled hidden></option>
+        <option value="Artur Janicki">Artur Janicki</option>
+        <option value="Marcin Kijak">Marcin Kijak</option>
+        <option value="Robert Horbal">Robert Horbal</option>
+        <option value="Paweł Krzak">Paweł Krzak</option>
+        <option value="Patryk Szymański">Patryk Szymański</option>
+        <option value="Marcin Wieland">Marcin Wieland</option>
+        <option value="Piotr Krawczyk">Piotr Krawczyk</option>
+        <option value="Jacek Tatarek">Jacek Tatarek</option>
+        <option value="Roman Krajewski">Roman Krajewski</option>
+        <option value="Paweł Bareja">Paweł Bareja</option>
+        <option value="Adrian Maciejczyk">Adrian Maciejczyk</option>
+      </select>
+
+      <p class="section-title">
+        3. Zdjęcie paragonu:
+      </p>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="receipt" value="tak" required>
+          TAK
+        </label>
+        <label>
+          <input type="radio" name="receipt" value="nie" required>
+          NIE
+        </label>
+      </div>
+      <div class="file-upload">
+        <input type="file" name="receiptFile" accept="image/*">
+      </div>
+
+      <p class="section-title">
+        4. Podpis
+      </p>
+      <div class="signature-container">
+        <label for="signatureCanvas">Podpis (narysuj palcem lub myszką):</label>
+        <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+        <input type="hidden" name="signature" id="signature">
+        <button type="button" class="clear-signature-button" onclick="clearCanvas()">Wyczyść podpis</button>
+      </div>
+
+      <div class="nicotine-warning">
+        Wyrób zawiera nikotynę, która powoduje uzależnienie.
+      </div>
+      <button type="submit">Wyślij</button>
+      <p class="disclaimer">
+        informacja przeznaczona wyłącznie do użytku wewnętrznego dla pracowników PRO VAPE Polska sp. z o.o.
+      </p>
+    </form>
   </div>
   <script>
     const canvas = document.getElementById("signatureCanvas");
@@ -256,5 +351,3 @@
   </script>
 </body>
 </html>
-
-
