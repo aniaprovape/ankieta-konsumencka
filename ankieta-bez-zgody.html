@@ -172,12 +172,7 @@
         src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
         alt="Nexi One SALT Logo">
     </div>
- <form 
-  action="https://formsubmit.co/tomasz@pro-vape.pl" 
-  method="POST" 
-  enctype="multipart/form-data" 
-  onsubmit="saveSignature(); sendToZapier();"
->
+ <form action="https://formsubmit.co/tomasz@pro-vape.pl" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
 
       <input type="hidden" name="_cc" value="anna.nechytailova@pro-vape.pl">
 
@@ -331,14 +326,7 @@
       const dataURL = canvas.toDataURL("image/png");
       document.getElementById("signature").value = dataURL;
     }
-function sendToZapier() {
-  const form = document.querySelector("form");
-  const formData = new FormData(form);
-  fetch("https://hooks.zapier.com/hooks/catch/14396799/2zklblv/", {
-    method: "POST",
-    body: formData
-  });
-}
+
 
     window.addEventListener("load", () => {
       resizeCanvas();
