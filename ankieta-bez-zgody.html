@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ankieta Konsumencka</title>
   <style>
     body {
@@ -11,8 +11,6 @@
       color: #D5B578;
       margin: 0;
       padding: 0;
-      font-size: 16px;
-      line-height: 1.5;
     }
     .container {
       max-width: 700px;
@@ -22,186 +20,69 @@
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
-    .logo {
-      text-align: center;
-      margin-bottom: 30px;
-    }
     .logo img {
       max-width: 260px;
     }
-    label {
-      display: block;
-      margin: 20px 20px 8px 20px;
-      font-size: 18px;
+    .file-upload {
+      margin: 20px 0;
+    }
+    .signature-canvas {
+      border: 1px solid #D5B578;
+      width: 100%;
+      height: 200px;
+      background: #ffffff;
+      margin-bottom: 15px;
     }
     button {
-      margin: 30px 20px 0 20px;
-      padding: 15px 20px;
-      width: calc(100% - 40px);
+      margin: 20px 0;
+      padding: 15px;
       background-color: #D5B578;
       color: #141B4D;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    button:hover {
-      background-color: #c4a467;
-    }
-    .input-text {
-      width: calc(100% - 40px);
-      padding: 15px;
-      margin: 0 20px 20px 20px;
-      border: 1px solid #D5B578;
-      border-radius: 5px;
-      background: #ECDEDB;
-      color: #141B4D;
-      box-sizing: border-box;
-      font-size: 16px;
-    }
-    .input-row {
-      display: flex;
-      align-items: center;
-      margin: 0 20px 20px 20px;
-      gap: 20px;
-    }
-    .input-row label {
-      margin: 0;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    .input-row input[type="radio"] {
-      margin-right: 8px;
-      flex-shrink: 0;
-      transform: scale(1.2);
-    }
-    .file-upload {
-      margin: 0 20px 20px 20px;
-      display: none; /* Domyślnie ukryte */
-    }
-    .signature-container {
-      margin: 20px 20px;
-    }
-    .signature-canvas {
-      border: 1px solid #D5B578;
-      border-radius: 5px;
-      width: 100%;
-      height: 200px;
-      background: #ffffff;
-      touch-action: none;
-      margin-bottom: 15px;
-    }
-    .nicotine-warning {
-      background: white;
-      color: black;
-      border: 2px solid black;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      margin: 30px 20px 0 20px;
-      border-radius: 5px;
-      padding: 10px 0;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-      .logo img {
-        max-width: 180px;
-      }
-      button {
-        margin: 20px 10px 0 10px !important;
-        width: calc(100% - 20px);
-      }
-      .input-text {
-        width: calc(100% - 20px);
-        margin: 0 10px 20px 10px;
-      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="logo">
-      <img src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg" alt="Nexi One SALT Logo">
+      <img src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg" alt="Logo">
     </div>
-    <form action="https://script.google.com/macros/s/AKfycbyNt85nLRB0sJXiVP6DcKdF4FSoMP-1sJvQFwMl4P3dfK0mNePC0lo8liFsG-RcpI1X/exec" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
-      <p>1. Wybierz ofertę, którą zainteresowany jest konsument:</p>
-      <div class="input-row">
-        <label>
-          <input type="checkbox" name="offer[]" value="NEXIONE Aspire">
-          NEXIONE Aspire
-        </label>
-        <label>
-          <input type="checkbox" name="offer[]" value="SALT">
-          SALT
-        </label>
+    <form id="surveyForm" method="POST" enctype="multipart/form-data">
+      <label for="first_name">Imię:</label>
+      <input type="text" id="first_name" name="first_name" required>
+
+      <label for="last_name">Nazwisko:</label>
+      <input type="text" id="last_name" name="last_name" required>
+
+      <label for="receipt">Czy istnieje paragon?</label>
+      <div>
+        <label><input type="radio" name="receipt" value="tak" onclick="toggleReceipt(true)"> TAK</label>
+        <label><input type="radio" name="receipt" value="nie" onclick="toggleReceipt(false)"> NIE</label>
       </div>
 
-      <p>2. Informacje o konsumencie:</p>
-      <div class="input-row">
-        <label>
-          <input type="radio" name="gender" value="Kobieta">
-          Kobieta
-        </label>
-        <label>
-          <input type="radio" name="gender" value="Mężczyzna">
-          Mężczyzna
-        </label>
-      </div>
-      <div class="input-row">
-        <label>
-          <input type="radio" name="age" value="20–35 lat">
-          20–35 lat
-        </label>
-        <label>
-          <input type="radio" name="age" value="36–45 lat">
-          36–45 lat
-        </label>
-        <label>
-          <input type="radio" name="age" value="powyżej 50 lat">
-          pow. 50 lat
-        </label>
-      </div>
-      <label for="store_address_1">Adres sklepu 1:</label>
-      <input class="input-text" type="text" name="store_address_1" id="store_address_1" placeholder="Adres sklepu" required>
-      <label for="store_address_2">Adres sklepu 2:</label>
-      <input class="input-text" type="text" name="store_address_2" id="store_address_2" placeholder="Adres sklepu">
-
-      <p>3. Zdjęcie paragonu:</p>
-      <div class="input-row">
-        <label>
-          <input type="radio" name="receipt" value="tak" onclick="toggleReceipt(true)">
-          TAK
-        </label>
-        <label>
-          <input type="radio" name="receipt" value="nie" onclick="toggleReceipt(false)">
-          NIE
-        </label>
-      </div>
-      <div class="file-upload" id="file-upload">
+      <div class="file-upload" id="fileUpload">
         <label for="receiptFile">Załącz zdjęcie paragonu:</label>
-        <input class="input-text" type="file" name="receiptFile" id="receiptFile" accept="image/*">
+        <input type="file" id="receiptFile" name="receiptFile" accept="image/*">
       </div>
 
-      <p>4. Podpis (narysuj palcem lub myszką):</p>
-      <div class="signature-container">
-        <canvas id="signatureCanvas" class="signature-canvas"></canvas>
-        <input type="hidden" name="signature" id="signature">
-        <button type="button" onclick="clearCanvas()">Wyczyść podpis</button>
-      </div>
+      <label>Podpis:</label>
+      <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+      <input type="hidden" id="signature" name="signature">
 
-      <div class="nicotine-warning">
-        Wyrób zawiera nikotynę, która powoduje uzależnienie.
-      </div>
-      <button type="submit">Wyślij</button>
+      <button type="button" onclick="clearCanvas()">Wyczyść podpis</button>
+      <button type="button" onclick="submitForm()">Wyślij</button>
     </form>
   </div>
   <script>
     const canvas = document.getElementById("signatureCanvas");
     const ctx = canvas.getContext("2d");
     let drawing = false;
+
+    function toggleReceipt(show) {
+      document.getElementById("fileUpload").style.display = show ? "block" : "none";
+    }
 
     canvas.addEventListener("mousedown", (e) => {
       drawing = true;
@@ -223,14 +104,21 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    function saveSignature() {
-      const signatureData = canvas.toDataURL("image/png");
-      document.getElementById("signature").value = signatureData;
-    }
+    function submitForm() {
+      const form = document.getElementById("surveyForm");
+      const formData = new FormData(form);
 
-    function toggleReceipt(show) {
-      const fileUpload = document.getElementById("file-upload");
-      fileUpload.style.display = show ? "block" : "none";
+      // Dodanie podpisu do formularza
+      const signatureData = canvas.toDataURL("image/png");
+      formData.append("signature", signatureData);
+
+      fetch("https://script.google.com/macros/s/AKfycby93MZWW34GgpeWtfENDYnp9CbL1HeZo7w-LauU6ODjOzohGi3Bm9z7Ze4LQLUtFPKn/exec", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((data) => alert(data))
+        .catch((error) => alert("Wystąpił błąd: " + error.message));
     }
   </script>
 </body>
