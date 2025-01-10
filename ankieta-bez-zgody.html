@@ -343,6 +343,16 @@
     canvas.addEventListener("touchstart", startDrawing, { passive: false });
     canvas.addEventListener("touchmove", draw, { passive: false });
     canvas.addEventListener("touchend", endDrawing, { passive: false });
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+  const formData = new FormData(this);
+  fetch("https://hooks.zapier.com/hooks/catch/14396799/2zklblv/", {
+    method: "POST",
+    body: formData
+  });
+});
+</script>
+
   </script>
 </body>
 </html>
