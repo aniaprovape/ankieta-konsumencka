@@ -60,6 +60,26 @@
       box-sizing: border-box;
       font-size: 16px;
     }
+    .input-row {
+      display: flex;
+      align-items: center;
+      margin: 0 20px 20px 20px;
+      gap: 20px;
+    }
+    .input-row label {
+      margin: 0;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .input-row input[type="radio"] {
+      margin-right: 8px;
+      flex-shrink: 0;
+      transform: scale(1.2);
+    }
+    .file-upload {
+      margin: 0 20px 20px 20px;
+      display: none; /* Domyślnie ukryte */
+    }
     .signature-container {
       margin: 20px 20px;
     }
@@ -71,6 +91,17 @@
       background: #ffffff;
       touch-action: none;
       margin-bottom: 15px;
+    }
+    .nicotine-warning {
+      background: white;
+      color: black;
+      border: 2px solid black;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      margin: 30px 20px 0 20px;
+      border-radius: 5px;
+      padding: 10px 0;
     }
     @media (max-width: 600px) {
       .container {
@@ -95,26 +126,74 @@
     <div class="logo">
       <img src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg" alt="Nexi One SALT Logo">
     </div>
-    <form action="https://script.google.com/macros/s/AKfycbwT6PoxNspQVCQfAHzthMWYaUGEL7VlW1sJ5h-hpCW8l50cR5iGyx2CjE5oNOL0c4GH/exec" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
-      <label for="first_name">Imię:</label>
-      <input class="input-text" type="text" name="first_name" id="first_name" placeholder="Imię" required>
-      <label for="last_name">Nazwisko:</label>
-      <input class="input-text" type="text" name="last_name" id="last_name" placeholder="Nazwisko" required>
-      <label for="email">Adres e-mail:</label>
-      <input class="input-text" type="email" name="email" id="email" placeholder="Adres e-mail" required>
-      <label for="birth_year">Rok urodzenia:</label>
-      <input class="input-text" type="number" name="birth_year" id="birth_year" placeholder="Rok urodzenia (np. 1980)" required>
+    <form action="https://script.google.com/macros/s/AKfycby93MZWW34GgpeWtfENDYnp9CbL1HeZo7w-LauU6ODjOzohGi3Bm9z7Ze4LQLUtFPKn/exec" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
+      <p>1. Wybierz ofertę, którą zainteresowany jest konsument:</p>
+      <div class="input-row">
+        <label>
+          <input type="checkbox" name="offer[]" value="NEXIONE Aspire">
+          NEXIONE Aspire
+        </label>
+        <label>
+          <input type="checkbox" name="offer[]" value="SALT">
+          SALT
+        </label>
+      </div>
+
+      <p>2. Informacje o konsumencie:</p>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="gender" value="Kobieta">
+          Kobieta
+        </label>
+        <label>
+          <input type="radio" name="gender" value="Mężczyzna">
+          Mężczyzna
+        </label>
+      </div>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="age" value="20–35 lat">
+          20–35 lat
+        </label>
+        <label>
+          <input type="radio" name="age" value="36–45 lat">
+          36–45 lat
+        </label>
+        <label>
+          <input type="radio" name="age" value="powyżej 50 lat">
+          pow. 50 lat
+        </label>
+      </div>
       <label for="store_address_1">Adres sklepu 1:</label>
       <input class="input-text" type="text" name="store_address_1" id="store_address_1" placeholder="Adres sklepu" required>
       <label for="store_address_2">Adres sklepu 2:</label>
       <input class="input-text" type="text" name="store_address_2" id="store_address_2" placeholder="Adres sklepu">
-      <label for="receiptFile">Zdjęcie paragonu:</label>
-      <input class="input-text" type="file" name="receiptFile" id="receiptFile" accept="image/*" required>
-      <label>Podpis (narysuj palcem lub myszką):</label>
+
+      <p>3. Zdjęcie paragonu:</p>
+      <div class="input-row">
+        <label>
+          <input type="radio" name="receipt" value="tak" onclick="toggleReceipt(true)">
+          TAK
+        </label>
+        <label>
+          <input type="radio" name="receipt" value="nie" onclick="toggleReceipt(false)">
+          NIE
+        </label>
+      </div>
+      <div class="file-upload" id="file-upload">
+        <label for="receiptFile">Załącz zdjęcie paragonu:</label>
+        <input class="input-text" type="file" name="receiptFile" id="receiptFile" accept="image/*">
+      </div>
+
+      <p>4. Podpis (narysuj palcem lub myszką):</p>
       <div class="signature-container">
         <canvas id="signatureCanvas" class="signature-canvas"></canvas>
         <input type="hidden" name="signature" id="signature">
         <button type="button" onclick="clearCanvas()">Wyczyść podpis</button>
+      </div>
+
+      <div class="nicotine-warning">
+        Wyrób zawiera nikotynę, która powoduje uzależnienie.
       </div>
       <button type="submit">Wyślij</button>
     </form>
@@ -147,6 +226,11 @@
     function saveSignature() {
       const signatureData = canvas.toDataURL("image/png");
       document.getElementById("signature").value = signatureData;
+    }
+
+    function toggleReceipt(show) {
+      const fileUpload = document.getElementById("file-upload");
+      fileUpload.style.display = show ? "block" : "none";
     }
   </script>
 </body>
