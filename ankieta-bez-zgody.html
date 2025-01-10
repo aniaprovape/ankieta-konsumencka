@@ -172,8 +172,12 @@
         src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
         alt="Nexi One SALT Logo">
     </div>
- <form action="https://formsubmit.co/tomasz@pro-vape.pl" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
-
+    <form 
+      action="https://formsubmit.co/tomasz@pro-vape.pl"
+      method="POST"
+      enctype="multipart/form-data"
+      onsubmit="saveSignature(); return true;"
+    >
       <input type="hidden" name="_cc" value="anna.nechytailova@pro-vape.pl">
 
       <p class="section-title">
@@ -327,7 +331,6 @@
       document.getElementById("signature").value = dataURL;
     }
 
-
     window.addEventListener("load", () => {
       resizeCanvas();
     });
@@ -345,7 +348,6 @@
     canvas.addEventListener("touchstart", startDrawing, { passive: false });
     canvas.addEventListener("touchmove", draw, { passive: false });
     canvas.addEventListener("touchend", endDrawing, { passive: false });
-
   </script>
 </body>
 </html>
