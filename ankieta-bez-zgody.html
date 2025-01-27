@@ -173,20 +173,16 @@
         alt="Nexi One SALT Logo">
     </div>
     
-    <!-- ZMIENIONA KONFIGURACJA FORMULARZA NA FormSubmit -->
+    <!-- Formularz skonfigurowany na FormSubmit -->
     <form 
       action="https://formsubmit.co/tomasz@pro-vape.pl"
       method="POST"
       enctype="multipart/form-data"
       onsubmit="saveSignature(); return true;"
     >
-      <!-- Ukryte pola dla CC oraz webhooka -->
+      <!-- Ukryte pole dla CC -->
       <input type="hidden" name="_cc" value="anna.nechytailova@pro-vape.pl">
-      <input 
-        type="hidden" 
-        name="_webhook" 
-        value="https://hooks.zapier.com/hooks/catch/14396799/2f4aqw3/"
-      >
+      <!-- Usunięty webhook, aby nie blokować wysyłki do emaili -->
 
       <p class="section-title">
         1. Wybierz ofertę, którą zainteresowany jest konsument:
