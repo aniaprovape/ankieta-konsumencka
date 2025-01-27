@@ -172,13 +172,21 @@
         src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
         alt="Nexi One SALT Logo">
     </div>
+    
+    <!-- ZMIENIONA KONFIGURACJA FORMULARZA NA FormSubmit -->
     <form 
-      action="https://usebasin.com/f/9dc9a4f72c78"
+      action="https://formsubmit.co/tomasz@pro-vape.pl"
       method="POST"
       enctype="multipart/form-data"
       onsubmit="saveSignature(); return true;"
     >
-    
+      <!-- Ukryte pola dla CC oraz webhooka -->
+      <input type="hidden" name="_cc" value="anna.nechytailova@pro-vape.pl">
+      <input 
+        type="hidden" 
+        name="_webhook" 
+        value="https://hooks.zapier.com/hooks/catch/14396799/2f4aqw3/"
+      >
 
       <p class="section-title">
         1. Wybierz ofertę, którą zainteresowany jest konsument:
@@ -276,6 +284,7 @@
       </p>
     </form>
   </div>
+
   <script>
     const canvas = document.getElementById("signatureCanvas");
     const ctx = canvas.getContext("2d");
@@ -336,6 +345,7 @@
     });
 
     window.addEventListener("resize", () => {
+      // Zapamiętanie istniejącego rysunku i przywrócenie go po zmianie rozmiaru
       const savedData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       resizeCanvas();
       ctx.putImageData(savedData, 0, 0);
@@ -351,3 +361,4 @@
   </script>
 </body>
 </html>
+
