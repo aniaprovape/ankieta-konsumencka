@@ -75,6 +75,7 @@
       align-items: center;
       margin: 0 20px 20px 20px;
       gap: 20px;
+      flex-wrap: wrap;
     }
     .input-row label {
       margin: 0;
@@ -107,6 +108,7 @@
       border: none;
       font-size: 16px;
       margin-top: 8px;
+      cursor: pointer;
     }
     .signature-container {
       margin: 20px 20px;
@@ -169,7 +171,7 @@
   <div class="container">
     <div class="logo">
       <img 
-        src="https://aniaprovape.github.io/ankieta-konsumencka//Nexi%20One%20SALT%20Logo.svg"
+        src="https://aniaprovape.github.io/ankieta-konsumencka/Nexi%20One%20SALT%20Logo.svg"
         alt="Nexi One SALT Logo">
     </div>
     
@@ -180,10 +182,15 @@
       enctype="multipart/form-data"
       onsubmit="saveSignature(); return true;"
     >
-      <!-- Ukryte pole dla CC -->
+      <!-- Pola ukryte potrzebne do poprawnego działania FormSubmit -->
+      <input type="hidden" name="_next" value="https://twoja-domena.pl/dziekujemy.html">
+      <input type="hidden" name="_subject" value="Nowa ankieta konsumencka">
+
+      <!-- Możesz także dodać: <input type="hidden" name="_captcha" value="false">, jeśli nie chcesz captcha -->
+
+      <!-- W razie potrzeby - CC (kopia) -->
       <input type="hidden" name="_cc" value="tomasz@pro-vape.pl">
-      <!-- (Opcjonalnie można dodać również _subject, _template czy _captcha w razie potrzeby) -->
-      
+
       <p class="section-title">
         1. Wybierz ofertę, którą zainteresowany jest konsument:
       </p>
@@ -225,11 +232,17 @@
           pow. 50 lat
         </label>
       </div>
+
       <input class="input-text" type="text" name="store_address_1" placeholder="Adres sklepu">
       <input class="input-text" type="text" name="store_address_2" placeholder="Adres sklepu">
 
       <label for="survey_filler">Ankieter:</label>
-      <select name="survey_filler" id="survey_filler" required style="width: calc(100% - 40px); padding: 15px; margin: 0 20px 20px 20px; border: 1px solid #D5B578; border-radius: 5px; background: #ECDEDB; color: #141B4D; font-size: 16px; box-sizing: border-box;">
+      <select 
+        name="survey_filler" 
+        id="survey_filler" 
+        required 
+        style="width: calc(100% - 40px); padding: 15px; margin: 0 20px 20px 20px; border: 1px solid #D5B578; border-radius: 5px; background: #ECDEDB; color: #141B4D; font-size: 16px; box-sizing: border-box;"
+      >
         <option value="" selected disabled hidden></option>
         <option value="Artur Janicki">Artur Janicki</option>
         <option value="Marcin Kijak">Marcin Kijak</option>
@@ -287,6 +300,7 @@
     let drawing = false;
 
     function resizeCanvas() {
+      // Ustaw rozmiar canvasa na jego aktualną szerokość/wysokość w CSS
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
