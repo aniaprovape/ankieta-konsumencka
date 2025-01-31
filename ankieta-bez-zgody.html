@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ankieta Konsumencka</title>
+  <title>Ankieta Konsumencka (Formspree)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -175,21 +175,17 @@
         alt="Nexi One SALT Logo">
     </div>
     
-    <!-- Formularz skonfigurowany na FormSubmit -->
+    <!-- Formularz skonfigurowany na Formspree -->
     <form 
-      action="https://formsubmit.co/anna.nechytailova@pro-vape.pl" 
+      action="https://formspree.io/f/mwppwdww" 
       method="POST"
       enctype="multipart/form-data"
       onsubmit="saveSignature(); return true;"
     >
-      <!-- Pola ukryte potrzebne do poprawnego działania FormSubmit -->
-      <input type="hidden" name="_next" value="https://twoja-domena.pl/dziekujemy.html">
+      <!-- Pola ukryte potrzebne dla Formspree -->
+      <!-- _subject ustawia temat wiadomości, _redirect przenosi na wybraną stronę po wysyłce -->
       <input type="hidden" name="_subject" value="Nowa ankieta konsumencka">
-
-      <!-- Możesz także dodać: <input type="hidden" name="_captcha" value="false">, jeśli nie chcesz captcha -->
-
-      <!-- W razie potrzeby - CC (kopia) -->
-      <input type="hidden" name="_cc" value="tomasz@pro-vape.pl">
+      <input type="hidden" name="_redirect" value="https://twoja-domena.pl/dziekujemy.html">
 
       <p class="section-title">
         1. Wybierz ofertę, którą zainteresowany jest konsument:
